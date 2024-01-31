@@ -43,4 +43,4 @@ packages/core/src/private/uploads/
 packages/workers/src/private/uploads/
 
 docker/data/**
-docker/rabbitmq-data/**
+docker/rabbitmq-data/**packages/plugin-documents-ui/src/index.js
