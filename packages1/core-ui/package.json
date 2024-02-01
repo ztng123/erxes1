@@ -1,0 +1,66 @@
+{
+  "name": "erxes",
+  "version": "0.1.1",
+  "private": true,
+  "license": "SEE LICENSE IN LICENSE",
+  "dependencies": {
+    "@apollo/client": "~3.7.14",
+    "@nateradebaugh/react-datetime": "^4.0.0-rc.10",
+    "@types/react": "^16.4.13",
+    "@types/react-dom": "^16.0.7",
+    "@types/react-router-dom": "^5.1.3",
+    "@types/styled-components": "^3.0.0",
+    "abortcontroller-polyfill": "^1.4.0",
+    "copy-text-to-clipboard": "^3.0.1",
+    "dayjs": "1.8.15",
+    "dotenv": "^10.0.0",
+    "erxes-icon": "^1.2.1",
+    "graphql": "^16.7.1",
+    "graphql-ws": "^5.5.5",
+    "lodash": "^4.17.15",
+    "lodash.flowright": "^3.5.0",
+    "query-string": "^5.0.0",
+    "react": "^16.14.0",
+    "react-bootstrap": "1.0.0-beta.14",
+    "react-color": "^2.17.3",
+    "react-dom": "^16.11.0",
+    "react-router-dom": "^5.1.2",
+    "react-select-plus": "^1.0.0-rc.5",
+    "react-transition-group": "^2.5.1",
+    "strip": "^3.0.0",
+    "styled-components": "^3.2.6",
+    "styled-components-ts": "^0.0.14",
+    "underscore.string": "^3.3.5",
+    "xss": "1.0.14"
+  },
+  "scripts": {
+    "start": "webpack serve --open --mode development",
+    "build": "node commands/build.js",
+    "compress": "gzip -5 --keep -r build/static/js",
+    "componentTest": "jest --runInBand --forceExit --detectOpenHandles --coverage",
+    "open-cypress": "yarn run cypress open",
+    "record-cypress": "cypress run --record=false --headless --browser chrome"
+  },
+  "devDependencies": {
+    "cypress": "^4.9.0",
+    "cypress-file-upload": "^4.0.7",
+    "node-watch": "^0.7.2",
+    "path-browserify": "^1.0.1",
+    "timers-browserify": "^2.0.12",
+    "util": "^0.12.4",
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-resolvers": "^4.0.1",
+    "@graphql-codegen/client-preset": "^4.1.0",
+    "@graphql-codegen/near-operation-file-preset": "^3.0.0"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "engines": {
+    "node": ">=10.x.x"
+  }
+}

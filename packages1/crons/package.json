@@ -1,0 +1,13 @@
+{
+  "name": "crons",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "ERXES_TELEMETRY_DISABLED=1 DEBUG=erxes-workers* NODE_ENV=development nodemon src/index.ts",
+    "build": "tsc"
+  },
+  "dependencies": {
+    "@erxes/api-utils" : "*",
+    "node-schedule": "^1.3.2"
+  }
+}
