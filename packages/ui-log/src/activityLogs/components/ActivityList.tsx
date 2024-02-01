@@ -1,11 +1,11 @@
-import { ActivityTitle, Timeline } from '../styles';
-
-import ActivityItem from './ActivityItem';
-import EmptyState from '@erxes/ui/src/components/EmptyState';
-import { IActivityLog } from '../types';
-import { IUser } from '@erxes/ui/src/auth/types';
-import React from 'react';
-import dayjs from 'dayjs';
+import { ActivityTitle, Timeline } from "../styles";
+import { __ } from "@erxes/ui/src/utils";
+import ActivityItem from "./ActivityItem";
+import EmptyState from "@erxes/ui/src/components/EmptyState";
+import { IActivityLog } from "../types";
+import { IUser } from "@erxes/ui/src/auth/types";
+import React from "react";
+import dayjs from "dayjs";
 
 export type IActivityListProps = {
   activities: IActivityLog[];
@@ -36,7 +36,7 @@ class ActivityList extends React.Component<IActivityListProps> {
     return (
       <div key={index}>
         <ActivityTitle>{data}</ActivityTitle>
-        {data.map(key => this.renderItem(activity[key]))}
+        {data.map((key) => this.renderItem(activity[key]))}
       </div>
     );
   }
@@ -44,10 +44,10 @@ class ActivityList extends React.Component<IActivityListProps> {
   renderTimeLine(activities) {
     const result = activities.reduce((item, activity) => {
       const { contentType } = activity;
-      const createdDate = dayjs(activity.createdAt).format('MMMM YYYY');
+      const createdDate = dayjs(activity.createdAt).format("MMMM YYYY");
 
       if (
-        contentType === 'cards:taskDetail' &&
+        contentType === "cards:taskDetail" &&
         dayjs(activity.createdAt) >= dayjs()
       ) {
         item.Upcoming = item.Upcoming || [];
@@ -73,12 +73,7 @@ class ActivityList extends React.Component<IActivityListProps> {
     const { activities } = this.props;
 
     if (!activities || activities.length < 1) {
-      return (
-        <EmptyState
-          text="There aren’t any activities at the moment."
-          icon="clock"
-        />
-      );
+      return <EmptyState text={__("anydata")} icon="clock" />;
     }
 
     return this.renderTimeLine(activities);

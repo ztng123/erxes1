@@ -1,0 +1,17 @@
+{
+  "name": "@erxes/plugin-clientportal-api",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "nodemon src/index.ts",
+    "build" : "tsc"
+  },
+  "dependencies": {
+    "@erxes/api-utils" : "*",
+    "jsonwebtoken": "^8.5.1",
+    "bcryptjs": "^2.4.3",
+    "randomatic": "^3.0.0",
+    "sha256": "^0.2.0",
+    "firebase-admin": "^8.6.1",
+    "crypto": "^1.0.1"
+  }
+}

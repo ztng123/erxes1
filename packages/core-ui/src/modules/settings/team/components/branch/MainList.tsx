@@ -1,32 +1,32 @@
-import { BranchesMainQueryResponse, IBranch } from '@erxes/ui/src/team/types';
+import { BranchesMainQueryResponse, IBranch } from "@erxes/ui/src/team/types";
 import {
   FilterContainer,
   InputBar,
   LeftActionBar,
-  Title
-} from '@erxes/ui-settings/src/styles';
-import { __, router } from '@erxes/ui/src/utils';
+  Title,
+} from "@erxes/ui-settings/src/styles";
+import { __, router } from "@erxes/ui/src/utils";
 
-import ActionButtons from '@erxes/ui/src/components/ActionButtons';
-import { BarItems } from 'modules/layout/styles';
-import Button from 'modules/common/components/Button';
-import DataWithLoader from 'modules/common/components/DataWithLoader';
-import Form from '../../containers/common/BlockForm';
-import FormControl from 'modules/common/components/form/Control';
-import Icon from '@erxes/ui/src/components/Icon';
-import LeftSidebar from '@erxes/ui/src/layout/components/Sidebar';
-import ModalTrigger from 'modules/common/components/ModalTrigger';
-import Pagination from 'modules/common/components/pagination/Pagination';
-import React from 'react';
-import SettingsSideBar from '../../containers/common/SettingSideBar';
-import SidebarHeader from '@erxes/ui-settings/src/common/components/SidebarHeader';
-import Table from 'modules/common/components/table';
-import Tip from '@erxes/ui/src/components/Tip';
-import Wrapper from 'modules/layout/components/Wrapper';
-import { generatePaginationParams } from '@erxes/ui/src/utils/router';
-import { generateTree } from '../../utils';
-import { gql } from '@apollo/client';
-import { queries } from '@erxes/ui/src/team/graphql';
+import ActionButtons from "@erxes/ui/src/components/ActionButtons";
+import { BarItems } from "modules/layout/styles";
+import Button from "modules/common/components/Button";
+import DataWithLoader from "modules/common/components/DataWithLoader";
+import Form from "../../containers/common/BlockForm";
+import FormControl from "modules/common/components/form/Control";
+import Icon from "@erxes/ui/src/components/Icon";
+import LeftSidebar from "@erxes/ui/src/layout/components/Sidebar";
+import ModalTrigger from "modules/common/components/ModalTrigger";
+import Pagination from "modules/common/components/pagination/Pagination";
+import React from "react";
+import SettingsSideBar from "../../containers/common/SettingSideBar";
+import SidebarHeader from "@erxes/ui-settings/src/common/components/SidebarHeader";
+import Table from "modules/common/components/table";
+import Tip from "@erxes/ui/src/components/Tip";
+import Wrapper from "modules/layout/components/Wrapper";
+import { generatePaginationParams } from "@erxes/ui/src/utils/router";
+import { generateTree } from "../../utils";
+import { gql } from "@apollo/client";
+import { queries } from "@erxes/ui/src/team/graphql";
 
 type Props = {
   listQuery: BranchesMainQueryResponse;
@@ -47,7 +47,7 @@ class MainList extends React.Component<Props, State> {
 
     this.state = {
       selectedItems: [],
-      searchValue: props.queryParams.searchValue || ''
+      searchValue: props.queryParams.searchValue || "",
     };
   }
 
@@ -57,9 +57,9 @@ class MainList extends React.Component<Props, State> {
       variables: {
         withoutUserFilter: true,
         searchValue: undefined,
-        ...generatePaginationParams(this.props.queryParams || {})
-      }
-    }
+        ...generatePaginationParams(this.props.queryParams || {}),
+      },
+    },
   ];
 
   remove = (_id?: string) => {
@@ -77,7 +77,7 @@ class MainList extends React.Component<Props, State> {
   renderForm() {
     const trigger = (
       <Button btnStyle="success" icon="plus-circle">
-        {__('Add Branch')}
+        {__("Add a Branch")}
       </Button>
     );
 
@@ -95,7 +95,7 @@ class MainList extends React.Component<Props, State> {
   }
 
   renderSearch() {
-    const search = e => {
+    const search = (e) => {
       if (this.timer) {
         clearTimeout(this.timer);
       }
@@ -106,15 +106,15 @@ class MainList extends React.Component<Props, State> {
       this.setState({ searchValue });
 
       this.timer = setTimeout(() => {
-        router.removeParams(history, 'page');
+        router.removeParams(history, "page");
         router.setParams(history, { searchValue });
       }, 500);
     };
 
-    const moveCursorAtTheEnd = e => {
+    const moveCursorAtTheEnd = (e) => {
       const tmpValue = e.target.value;
 
-      e.target.value = '';
+      e.target.value = "";
       e.target.value = tmpValue;
     };
 
@@ -124,7 +124,7 @@ class MainList extends React.Component<Props, State> {
           <Icon icon="search-1" size={20} />
           <FormControl
             type="text"
-            placeholder={__('Type to search')}
+            placeholder={__("Type to search")}
             onChange={search}
             value={this.state.searchValue}
             autoFocus={true}
@@ -141,20 +141,20 @@ class MainList extends React.Component<Props, State> {
     const handleSelect = () => {
       if (selectedItems.includes(branch._id)) {
         const removedSelectedItems = selectedItems.filter(
-          selectItem => selectItem !== branch._id
+          (selectItem) => selectItem !== branch._id
         );
         return this.setState({ selectedItems: removedSelectedItems });
       }
       this.setState({ selectedItems: [...selectedItems, branch._id] });
     };
 
-    const onclick = e => {
+    const onclick = (e) => {
       e.stopPropagation();
     };
 
     const trigger = (
       <Button btnStyle="link">
-        <Tip text={__('Edit')} placement="top">
+        <Tip text={__("Edit")} placement="top">
           <Icon icon="edit-3" />
         </Tip>
       </Button>
@@ -169,10 +169,10 @@ class MainList extends React.Component<Props, State> {
             onClick={handleSelect}
           />
         </td>
-        <td>{__(`${'\u00A0 \u00A0 '.repeat(level)}  ${branch.code}`)}</td>
+        <td>{__(`${"\u00A0 \u00A0 ".repeat(level)}  ${branch.code}`)}</td>
         <td>{__(branch.title)}</td>
-        <td>{branch?.parent?.title || ''}</td>
-        <td>{__(branch.address.replace(/\n/g, ''))}</td>
+        <td>{branch?.parent?.title || ""}</td>
+        <td>{__(branch.address.replace(/\n/g, ""))}</td>
         <td>{branch.userCount}</td>
         <td>
           <ActionButtons>
@@ -189,7 +189,7 @@ class MainList extends React.Component<Props, State> {
               )}
               trigger={trigger}
             />
-            <Tip text={__('Delete')} placement="top">
+            <Tip text={__("Delete")} placement="top">
               <Button
                 btnStyle="link"
                 onClick={() => this.remove(branch._id)}
@@ -210,7 +210,7 @@ class MainList extends React.Component<Props, State> {
 
     const handleSelectAll = () => {
       if (!selectedItems.length) {
-        const branchIds = branches.map(branch => branch._id);
+        const branchIds = branches.map((branch) => branch._id);
         return this.setState({ selectedItems: branchIds });
       }
 
@@ -228,19 +228,19 @@ class MainList extends React.Component<Props, State> {
                 onClick={handleSelectAll}
               />
             </th>
-            <th>{__('Code')}</th>
-            <th>{__('Title')}</th>
-            <th>{__('Parent')}</th>
-            <th>{__('Address')}</th>
-            <th>{__('Team member count')}</th>
-            <th>{__('Actions')}</th>
+            <th>{__("Code")}</th>
+            <th>{__("Title")}</th>
+            <th>{__("Parent")}</th>
+            <th>{__("Address")}</th>
+            <th>{__("Team member count")}</th>
+            <th>{__("Actions")}</th>
           </tr>
         </thead>
         <tbody>
           {generateTree(branches, null, (branch, level) =>
             this.renderRow(branch, level)
           )}
-          {generateTree(branches, '', (branch, level) =>
+          {generateTree(branches, "", (branch, level) =>
             this.renderRow(branch, level)
           )}
         </tbody>
@@ -279,8 +279,8 @@ class MainList extends React.Component<Props, State> {
           <Wrapper.Header
             title="Branches"
             breadcrumb={[
-              { title: __('Settings'), link: '/settings' },
-              { title: __('Branches') }
+              { title: __("Settings"), link: "/settings" },
+              { title: __("Branches") },
             ]}
           />
         }
@@ -289,7 +289,7 @@ class MainList extends React.Component<Props, State> {
             left={
               <LeftActionBar>
                 <Title capitalize={true}>
-                  {__('Branches')}&nbsp;
+                  {__("Branches")}&nbsp;
                   {`(${totalCount || 0})`}
                 </Title>
                 {leftActionBar}

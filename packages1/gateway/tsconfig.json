@@ -1,0 +1,7 @@
+{
+    "extends" : "../tsconfig.api.jsonc",
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src"
+    }
+}
