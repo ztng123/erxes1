@@ -1,18 +1,18 @@
-import BrandForm from "@erxes/ui/src/brands/components/BrandForm";
-import Button from "modules/common/components/Button";
-import DataWithLoader from "modules/common/components/DataWithLoader";
-import EmptyState from "modules/common/components/EmptyState";
-import HeaderDescription from "modules/common/components/HeaderDescription";
-import { IBrand } from "../types";
-import { IButtonMutateProps } from "@erxes/ui/src/types";
-import ModalTrigger from "modules/common/components/ModalTrigger";
-import Pagination from "modules/common/components/pagination/Pagination";
-import React from "react";
-import Sidebar from "../containers/Sidebar";
-import Table from "modules/common/components/table";
-import { Title } from "@erxes/ui-settings/src/styles";
-import Wrapper from "../../../layout/components/Wrapper";
-import { __ } from "../../../common/utils";
+import BrandForm from '@erxes/ui/src/brands/components/BrandForm';
+import Button from 'modules/common/components/Button';
+import DataWithLoader from 'modules/common/components/DataWithLoader';
+import EmptyState from 'modules/common/components/EmptyState';
+import HeaderDescription from 'modules/common/components/HeaderDescription';
+import { IBrand } from '../types';
+import { IButtonMutateProps } from '@erxes/ui/src/types';
+import ModalTrigger from 'modules/common/components/ModalTrigger';
+import Pagination from 'modules/common/components/pagination/Pagination';
+import React from 'react';
+import Sidebar from '../containers/Sidebar';
+import Table from 'modules/common/components/table';
+import { Title } from '@erxes/ui-settings/src/styles';
+import Wrapper from '../../../layout/components/Wrapper';
+import { __ } from '../../../common/utils';
 
 type Props = {
   brandsTotalCount: number;
@@ -35,9 +35,9 @@ class Brands extends React.Component<Props, {}> {
         <Table>
           <thead>
             <tr>
-              <th>{__("Brand name")}</th>
-              <th>{__("Description")}</th>
-              <th>{__("Actions")}</th>
+              <th>{__('Brand name')}</th>
+              <th>{__('Description')}</th>
+              <th>{__('Actions')}</th>
             </tr>
           </thead>
           <tbody>
@@ -57,14 +57,14 @@ class Brands extends React.Component<Props, {}> {
     const { brandsTotalCount, currentBrand, loading } = this.props;
 
     const breadcrumb = [
-      { title: __("Settings"), link: "/settings" },
-      { title: __("Brands"), link: "/settings/brands" },
-      { title: `${currentBrand.name || ""}` },
+      { title: __('Settings'), link: '/settings' },
+      { title: __('Brands'), link: '/settings/brands' },
+      { title: `${currentBrand.name || ''}` }
     ];
 
     const addBrand = (
       <Button
-        id={"NewBrandButton"}
+        id={'NewBrandButton'}
         btnStyle="success"
         block={true}
         icon="plus-circle"
@@ -73,7 +73,7 @@ class Brands extends React.Component<Props, {}> {
       </Button>
     );
 
-    const content = (props) => (
+    const content = props => (
       <BrandForm
         {...props}
         extended={true}
@@ -97,16 +97,16 @@ class Brands extends React.Component<Props, {}> {
       <Wrapper
         header={
           <Wrapper.Header
-            title={`${currentBrand.name || ""}`}
+            title={`${currentBrand.name || ''}`}
             breadcrumb={breadcrumb}
           />
         }
         mainHead={
           <HeaderDescription
             icon="/images/actions/32.svg"
-            title={"Brands"}
+            title={'Brands'}
             description={__(
-              "Add unlimited Brands with unlimited support to further your growth and accelerate your business"
+              'Add unlimited Brands with unlimited support to further your growth and accelerate your business'
             )}
           />
         }
