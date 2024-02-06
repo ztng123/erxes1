@@ -1,16 +1,16 @@
-import { FormControl, FormGroup } from "@erxes/ui/src/components/form";
-import { IButtonMutateProps, IFormProps } from "@erxes/ui/src/types";
-import { IDepartment, IUnit } from "@erxes/ui/src/team/types";
-import React, { useState } from "react";
+import { FormControl, FormGroup } from '@erxes/ui/src/components/form';
+import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
+import { IDepartment, IUnit } from '@erxes/ui/src/team/types';
+import React, { useState } from 'react';
 
-import Button from "@erxes/ui/src/components/Button";
-import ControlLabel from "@erxes/ui/src/components/form/Label";
-import Form from "@erxes/ui/src/components/form/Form";
-import { ModalFooter } from "@erxes/ui/src/styles/main";
-import Select from "react-select-plus";
-import SelectStructureMembers from "../SelectStructureMembers";
-import { __ } from "modules/common/utils";
-import { generateUserOptions } from "@erxes/ui/src/team/containers/SelectDepartments";
+import Button from '@erxes/ui/src/components/Button';
+import ControlLabel from '@erxes/ui/src/components/form/Label';
+import Form from '@erxes/ui/src/components/form/Form';
+import { ModalFooter } from '@erxes/ui/src/styles/main';
+import Select from 'react-select-plus';
+import SelectStructureMembers from '../SelectStructureMembers';
+import { __ } from 'modules/common/utils';
+import { generateUserOptions } from '@erxes/ui/src/team/containers/SelectDepartments';
 
 type Props = {
   renderButton: (props: IButtonMutateProps) => JSX.Element;
@@ -24,12 +24,12 @@ export default function DepartmentForm(props: Props) {
   const object = item || ({} as IUnit);
 
   const [userIds, setUserIds] = useState(
-    (object.users || []).map((user) => user._id)
+    (object.users || []).map(user => user._id)
   );
   const [departmentId, setDepartmentId] = useState(object.departmentId);
   const [supervisorId, setSupervisorId] = useState(object.supervisorId);
 
-  const generateDoc = (values) => {
+  const generateDoc = values => {
     const finalValues = values;
 
     if (object) {
@@ -40,7 +40,7 @@ export default function DepartmentForm(props: Props) {
       userIds,
       departmentId,
       supervisorId,
-      ...finalValues,
+      ...finalValues
     };
   };
 
@@ -48,15 +48,15 @@ export default function DepartmentForm(props: Props) {
     setDepartmentId(parent.value);
   };
 
-  const onSelectUsers = (options) => {
-    setUserIds(options.map((option) => option.value));
+  const onSelectUsers = options => {
+    setUserIds(options.map(option => option.value));
   };
 
-  const onSelectSupervisor = (option) => {
+  const onSelectSupervisor = option => {
     if (option) {
       setSupervisorId(option.value);
     } else {
-      setSupervisorId("");
+      setSupervisorId('');
     }
   };
 
@@ -66,7 +66,7 @@ export default function DepartmentForm(props: Props) {
     return (
       <>
         <FormGroup>
-          <ControlLabel required={true}>{__("Title")}</ControlLabel>
+          <ControlLabel required={true}>{__('Title')}</ControlLabel>
           <FormControl
             {...formProps}
             name="title"
@@ -76,7 +76,7 @@ export default function DepartmentForm(props: Props) {
           />
         </FormGroup>
         <FormGroup>
-          <ControlLabel>{__("Description")}</ControlLabel>
+          <ControlLabel>{__('Description')}</ControlLabel>
           <FormControl
             {...formProps}
             name="description"
@@ -85,7 +85,7 @@ export default function DepartmentForm(props: Props) {
           />
         </FormGroup>
         <FormGroup>
-          <ControlLabel required={true}>{__("Code")}</ControlLabel>
+          <ControlLabel required={true}>{__('Code')}</ControlLabel>
           <FormControl
             required={true}
             {...formProps}
@@ -94,7 +94,7 @@ export default function DepartmentForm(props: Props) {
           />
         </FormGroup>
         <FormGroup>
-          <ControlLabel>{__("Supervisor")}</ControlLabel>
+          <ControlLabel>{__('Supervisor')}</ControlLabel>
 
           <SelectStructureMembers
             name="supervisorId"
@@ -104,20 +104,20 @@ export default function DepartmentForm(props: Props) {
             multi={false}
             isAllUsers={true}
             excludeUserIds={userIds}
-            placeholder={__("Select...")}
+            placeholder={__('Select...')}
           />
         </FormGroup>
         <FormGroup>
-          <ControlLabel>{__("Department")}</ControlLabel>
+          <ControlLabel>{__('Department')}</ControlLabel>
           <Select
-            placeholder={__("Choose department")}
+            placeholder={__('Choose department')}
             value={departmentId}
             onChange={onChangeDepartment}
             options={generateUserOptions(departments)}
           />
         </FormGroup>
         <FormGroup>
-          <ControlLabel>{__("Team Members")}</ControlLabel>
+          <ControlLabel>{__('Team Members')}</ControlLabel>
 
           <SelectStructureMembers
             objectId={object._id}
@@ -144,7 +144,7 @@ export default function DepartmentForm(props: Props) {
             values: generateDoc(values),
             isSubmitted,
             callback: closeModal,
-            object,
+            object
           })}
         </ModalFooter>
       </>

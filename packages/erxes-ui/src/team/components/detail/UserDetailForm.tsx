@@ -1,12 +1,12 @@
-import ActionSection from "../../containers/ActionSection";
-import EmptyState from "@erxes/ui/src/components/EmptyState";
-import { IUser } from "@erxes/ui/src/auth/types";
-import InfoSection from "./InfoSection";
-import LeftSidebar from "./LeftSidebar";
-import React, { useState } from "react";
-import { UserHeader, BoxWrapper } from "./styles";
-import Wrapper from "@erxes/ui/src/layout/components/Wrapper";
-import { loadDynamicComponent } from "@erxes/ui/src/utils/core";
+import ActionSection from '../../containers/ActionSection';
+import EmptyState from '@erxes/ui/src/components/EmptyState';
+import { IUser } from '@erxes/ui/src/auth/types';
+import InfoSection from './InfoSection';
+import LeftSidebar from './LeftSidebar';
+import React, { useState } from 'react';
+import { UserHeader, BoxWrapper } from './styles';
+import Wrapper from '@erxes/ui/src/layout/components/Wrapper';
+import { loadDynamicComponent } from '@erxes/ui/src/utils/core';
 import {
   Box,
   ControlLabel,
@@ -14,14 +14,14 @@ import {
   __,
   Button,
   Form as CommonForm,
-  ModalTrigger,
-} from "@erxes/ui/src";
-import { ButtonRelated, ModalFooter } from "@erxes/ui/src/styles/main";
-import SelectBranches from "@erxes/ui/src/team/containers/SelectBranches";
-import SelectDepartments from "@erxes/ui/src/team/containers/SelectDepartments";
-import Sidebar from "@erxes/ui/src/layout/components/Sidebar";
-import { IButtonMutateProps } from "../../../types";
-import UserMovementForm from "../../containers/UserMovementForm";
+  ModalTrigger
+} from '@erxes/ui/src';
+import { ButtonRelated, ModalFooter } from '@erxes/ui/src/styles/main';
+import SelectBranches from '@erxes/ui/src/team/containers/SelectBranches';
+import SelectDepartments from '@erxes/ui/src/team/containers/SelectDepartments';
+import Sidebar from '@erxes/ui/src/layout/components/Sidebar';
+import { IButtonMutateProps } from '../../../types';
+import UserMovementForm from '../../containers/UserMovementForm';
 
 type Props = {
   user: IUser;
@@ -32,14 +32,14 @@ type Props = {
   excludeUserSkill: (skillId: string, userId: string) => void;
   renderSkillForm: ({
     closeModal,
-    user,
+    user
   }: {
     closeModal: () => void;
     user: IUser;
   }) => React.ReactNode;
   renderEditForm: ({
     closeModal,
-    user,
+    user
   }: {
     closeModal: () => void;
     user: IUser;
@@ -54,19 +54,19 @@ function UserDetails({
   excludeUserSkill,
   renderSkillForm,
   renderEditForm,
-  renderButton,
+  renderButton
 }: Props) {
   const { details = {} } = user;
   const [department, setDepartmentIds] = useState({
     ids: user.departmentIds || [],
-    isChanged: false,
+    isChanged: false
   });
   const [branch, setBranchIds] = useState({
     ids: user.branchIds || [],
-    isChanged: false,
+    isChanged: false
   });
-  const title = details.fullName || "Unknown";
-  const breadcrumb = [{ title: "Users", link: "/settings/team" }, { title }];
+  const title = details.fullName || 'Unknown';
+  const breadcrumb = [{ title: 'Users', link: '/settings/team' }, { title }];
 
   if (!user._id) {
     return (
@@ -87,27 +87,27 @@ function UserDetails({
   ) => {
     let Selection;
 
-    const handleChange = (value) => {
+    const handleChange = value => {
       handleState({ ids: value, isChanged: true });
     };
 
-    if (key === "department") {
+    if (key === 'department') {
       Selection = SelectDepartments;
     }
-    if (key === "branch") {
+    if (key === 'branch') {
       Selection = SelectBranches;
     }
 
-    const content = (formProps) => {
+    const content = formProps => {
       const callback = () => {
-        handleState((prev) => ({ ids: prev.ids, isChanged: false }));
+        handleState(prev => ({ ids: prev.ids, isChanged: false }));
       };
       const handleCancel = () => {
         handleState({ ids: user[`${key}Ids`], isChanged: false });
       };
 
       const generateDoc = () => {
-        user.details && delete user.details["__typename"];
+        user.details && delete user.details['__typename'];
         return { ...user, [`${key}Ids`]: ids };
       };
 
@@ -118,11 +118,11 @@ function UserDetails({
           </ButtonRelated>
         );
 
-        const content = (props) => {
+        const content = props => {
           const updatedProps = {
             ...props,
             userId: user._id,
-            contentType: key,
+            contentType: key
           };
           return <UserMovementForm {...updatedProps} />;
         };
@@ -145,20 +145,20 @@ function UserDetails({
               label={`Choose ${label}`}
               name={`${key}Ids`}
               initialValue={ids}
-              onSelect={(value) => handleChange(value)}
+              onSelect={value => handleChange(value)}
               filterParams={{ withoutUserFilter: true }}
             />
           </FormGroup>
           {isChanged && (
             <ModalFooter>
               <Button btnStyle="simple" onClick={handleCancel}>
-                {__("Cancel")}
+                {__('Cancel')}
               </Button>
               {renderButton({
-                text: "user movement",
+                text: 'user movement',
                 values: generateDoc(),
                 isSubmitted: formProps.isSubmitted,
-                callback,
+                callback
               })}
             </ModalFooter>
           )}
@@ -172,26 +172,26 @@ function UserDetails({
   const leftSidebar = (
     <Sidebar>
       <Sidebar>
-        <Box title={__("Branches")}>
+        <Box title={__('Branches')}>
           {list(
             branch.ids,
             branch.isChanged,
-            "Branches",
-            "branch",
+            'Branches',
+            'branch',
             setBranchIds
           )}
         </Box>
-        <Box title={__("Departments")}>
+        <Box title={__('Departments')}>
           {list(
             department.ids,
             department.isChanged,
-            "Departments",
-            "department",
+            'Departments',
+            'department',
             setDepartmentIds
           )}
         </Box>
       </Sidebar>
-      {loadDynamicComponent("contactDetailRightSidebar", { user })}
+      {loadDynamicComponent('contactDetailRightSidebar', { user })}
     </Sidebar>
   );
 
@@ -208,7 +208,7 @@ function UserDetails({
           >
             <ActionSection user={user} renderEditForm={renderEditForm} />
           </InfoSection>
-          {loadDynamicComponent("contactDetailHeader", { customer: user })}
+          {loadDynamicComponent('contactDetailHeader', { customer: user })}
         </UserHeader>
       }
       leftSidebar={
@@ -221,7 +221,7 @@ function UserDetails({
         />
       }
       rightSidebar={leftSidebar}
-      content={loadDynamicComponent("contactDetailContent", { contact: user })}
+      content={loadDynamicComponent('contactDetailContent', { contact: user })}
       transparent={true}
     />
   );
