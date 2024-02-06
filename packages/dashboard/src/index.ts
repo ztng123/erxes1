@@ -1,6 +1,6 @@
 import * as dotenv from 'dotenv';
 import * as jwt from 'jsonwebtoken';
-
+import * as cors from 'cors';
 import { CubejsServer } from '@cubejs-backend/server';
 import { getService, getServices } from './serviceDiscovery';
 
@@ -43,6 +43,8 @@ server
         dashboardToken
       });
     });
+
+    app.use(cors());
 
     console.log(`🚀 Cube.js server is listening on ${port} dbname ${DB_NAME}`);
   })

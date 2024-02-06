@@ -45,41 +45,40 @@
     "create-release-ci": "node scripts/create-release-ci"
   },
   "devDependencies": {
-    "@release-it/conventional-changelog": "1.1.0",
-    "@types/node": "18.17.1",  
-    "husky": "^0.13.4",
-    "lint-staged": "^3.6.0",
-    "prettier": "^1.14.2",
-    "typescript": "4.9.5",
-
-    "//": "UI development dependencies, since sibling devDependencies are not being installed we moved them from packages/erxes-ui/package.json to here",
     "@babel/core": "^7.15.8",
     "@babel/plugin-transform-runtime": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@babel/preset-react": "^7.14.5",
     "@babel/preset-typescript": "^7.10.4",
     "@module-federation/fmr": "^0.0.7",
+    "@release-it/conventional-changelog": "1.1.0",
+    "@types/node": "18.17.1",
     "@types/react": "^17.0.2",
     "@types/react-dom": "^17.0.2",
     "autoprefixer": "^10.1.0",
     "babel-loader": "^8.2.2",
     "css-loader": "^6.3.0",
     "html-webpack-plugin": "^5.3.2",
+    "husky": "^0.13.4",
     "interpolate-html-plugin": "^4.0.0",
     "json-loader": "^0.5.7",
+    "lint-staged": "^3.6.0",
     "postcss": "^8.2.1",
     "postcss-loader": "^4.1.0",
+    "prettier": "^1.14.2",
+    "process": "0.11.10",
     "style-loader": "^3.3.0",
     "terser-webpack-plugin": "^5.3.1",
     "timers-browserify": "^2.0.12",
+    "typescript": "4.9.5",
     "watch-sync": "^0.3.1",
     "webpack": "^5.57.1",
     "webpack-bundle-analyzer": "^4.5.0",
     "webpack-cli": "^4.9.0",
-    "webpack-dev-server": "^4.3.1",
-    "process": "0.11.10"
+    "webpack-dev-server": "^4.3.1"
   },
   "dependencies": {
-    "//" : "Only put dependencies that are required by all packages here!!!"
+    "@apollo/federation": "^0.38.1",
+    "elastic-apm-node": "^4.4.0"
   }
 }
