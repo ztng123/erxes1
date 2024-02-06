@@ -1,8 +1,16 @@
+import * as apm from 'elastic-apm-node';
 import * as dotenv from 'dotenv';
-import * as Sentry from '@sentry/node';
 
 // load environment variables
 dotenv.config({ path: '../.env' });
+
+if (process.env.ELASTIC_APM_HOST_NAME) {
+  apm.start({
+    serviceName: `${process.env.ELASTIC_APM_HOST_NAME}-${process.env
+      .SERVICE_NAME || ''}`,
+    serverUrl: 'http://172.104.115.19:8200'
+  });
+}
 
 import * as cors from 'cors';
 
@@ -25,7 +33,6 @@ import pubsub from './pubsub';
 import { ApolloServerPluginDrainHttpServer } from 'apollo-server-core';
 import * as path from 'path';
 import * as ws from 'ws';
-
 import {
   getService,
   getServices,
@@ -43,34 +50,10 @@ const {
   RABBITMQ_HOST,
   MESSAGE_BROKER_PREFIX,
   PORT,
-  USE_BRAND_RESTRICTIONS,
-  SENTRY_DSN
+  USE_BRAND_RESTRICTIONS
 } = process.env;
 
 export const app = express();
-
-if (SENTRY_DSN) {
-  Sentry.init({
-    dsn: SENTRY_DSN,
-    integrations: [
-      // enable HTTP calls tracing
-      new Sentry.Integrations.Http({ tracing: true }),
-      // Automatically instrument Node.js libraries and frameworks
-      ...Sentry.autoDiscoverNodePerformanceMonitoringIntegrations()
-    ],
-    // Set tracesSampleRate to 1.0 to capture 100%
-    // of transactions for performance monitoring.
-    // We recommend adjusting this value in production
-    tracesSampleRate: 1.0,
-    profilesSampleRate: 1.0 // Profiling sample rate is relative to tracesSampleRate
-  });
-}
-
-// RequestHandler creates a separate execution context, so that all
-// transactions/spans/breadcrumbs are isolated across requests
-app.use(Sentry.Handlers.requestHandler());
-// TracingHandler creates a trace for every incoming request
-app.use(Sentry.Handlers.tracingHandler());
 
 app.use(bodyParser.json({ limit: '15mb' }));
 app.use(bodyParser.urlencoded({ limit: '15mb', extended: true }));
@@ -116,22 +99,6 @@ if (configs.hasSubscriptions) {
   });
 }
 
-if (configs.hasDashboard) {
-  if (configs.hasDashboard) {
-    app.get('/dashboard', async (req, res) => {
-      const headers = req.rawHeaders;
-
-      const index = headers.indexOf('schemaName') + 1;
-
-      const schemaName = headers[index];
-
-      res.sendFile(
-        path.join(__dirname, `../../src/dashboardSchemas/${schemaName}.js`)
-      );
-    });
-  }
-}
-
 app.use((req: any, _res, next) => {
   req.rawBody = '';
 
@@ -150,9 +117,6 @@ app.use((error, _req, res, _next) => {
 
   res.status(500).send(msg);
 });
-
-// The error handler must be before any other error middleware and after all controllers
-app.use(Sentry.Handlers.errorHandler());
 
 const httpServer = http.createServer(app);
 
@@ -299,15 +263,6 @@ async function startServer() {
     httpServer.listen({ port: PORT }, resolve)
   );
 
-  if (configs.freeSubscriptions) {
-    const wsServer = new ws.Server({
-      server: httpServer,
-      path: '/subscriptions'
-    });
-
-    await configs.freeSubscriptions(wsServer);
-  }
-
   console.log(
     `🚀 ${configs.name} graphql api ready at http://localhost:${PORT}${apolloServer.graphqlPath}`
   );
@@ -320,7 +275,8 @@ async function startServer() {
   const messageBrokerClient = await initBroker({
     RABBITMQ_HOST,
     MESSAGE_BROKER_PREFIX,
-    redis
+    redis,
+    app
   });
 
   if (configs.permissions) {
@@ -343,10 +299,7 @@ async function startServer() {
       initialSetup,
       cronjobs,
       documents,
-      exporter,
-      documentPrintHook,
-      readFileHook,
-      payment
+      exporter
     } = configs.meta;
 
     const { consumeRPCQueue, consumeQueue } = messageBrokerClient;
@@ -433,15 +386,6 @@ async function startServer() {
         consumeRPCQueue(`${configs.name}:fieldsGroupsHook`, async args => ({
           status: 'success',
           data: await forms.fieldsGroupsHook(args)
-        }));
-      }
-
-      if (forms.relations) {
-        forms.relationsAvailable = true;
-
-        consumeRPCQueue(`${configs.name}:relations`, async args => ({
-          status: 'success',
-          data: await forms.relations(args)
         }));
       }
     }
@@ -603,7 +547,7 @@ async function startServer() {
         `${configs.name}:documents.editorAttributes`,
         async args => ({
           status: 'success',
-          data: await documents.editorAttributes(args)
+          data: await documents.editorAttributes()
         })
       );
 
@@ -615,34 +559,6 @@ async function startServer() {
         })
       );
     }
-
-    if (readFileHook) {
-      readFileHook.isAvailable = true;
-
-      consumeRPCQueue(`${configs.name}:readFileHook`, async args => ({
-        status: 'success',
-        data: await readFileHook.action(args)
-      }));
-    }
-
-    if (documentPrintHook) {
-      documentPrintHook.isAvailable = true;
-
-      consumeRPCQueue(`${configs.name}:documentPrintHook`, async args => ({
-        status: 'success',
-        data: await documentPrintHook.action(args)
-      }));
-    }
-
-    if (payment) {
-      if (payment.callback) {
-        payment.callbackAvailable = true;
-        consumeQueue(`${configs.name}:paymentCallback`, async args => ({
-          status: 'success',
-          data: await payment.callback(args)
-        }));
-      }
-    }
   } // end configs.meta if
 
   await join({
@@ -650,7 +566,6 @@ async function startServer() {
     port: PORT || '',
     dbConnectionString: mongoUrl,
     hasSubscriptions: configs.hasSubscriptions,
-    hasDashboard: configs.hasDashboard,
     importExportTypes: configs.importExportTypes,
     meta: configs.meta
   });
@@ -666,6 +581,15 @@ async function startServer() {
       error: debugError
     }
   });
+
+  if (configs.freeSubscriptions) {
+    const wsServer = new ws.Server({
+      server: httpServer,
+      path: '/subscriptions'
+    });
+
+    await configs.freeSubscriptions(wsServer);
+  }
 
   debugInfo(`${configs.name} server is running on port: ${PORT}`);
 }

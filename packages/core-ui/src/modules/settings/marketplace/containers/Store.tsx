@@ -30,7 +30,7 @@ class StoreContainer extends React.Component<Props, State> {
         this.setState({ plugins });
       })
       .catch(e => {
-        console.log(e, 'error');
+        console.error('Fetching plugins failed:', e);
       });
   }
 
