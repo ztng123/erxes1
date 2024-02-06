@@ -24,6 +24,8 @@
     "restart": "pm2 restart all"
   },
   "dependencies": {
+    "@apollo/federation": "^0.38.1",
+    "@sentry/node": "^7.99.0",
     "chalk": "^4.1.0",
     "cli-progress": "^3.8.2",
     "colors": "^1.4.0",
