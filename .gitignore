@@ -37,7 +37,6 @@ packages/core-ui/public/js/plugins.js
 cli/permissions.json
 cli/enabled-services.js
 cli/enabled-services.json
-cli/configs.json
 essyncer/plugins.json
 packages/core/src/private/uploads/
 packages/workers/src/private/uploads/
