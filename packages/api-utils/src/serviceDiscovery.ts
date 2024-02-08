@@ -1,7 +1,7 @@
 import * as dotenv from 'dotenv';
 import redisClient from './redis';
 import Redis from 'ioredis';
-dotenv.config();
+dotenv.config({ path: __dirname + '/.env' });
 
 const {
   NODE_ENV,

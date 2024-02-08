@@ -7,24 +7,11 @@
   "mongo": { "username": "", "password": "" },
   "rabbitmq": { "cookie": "", "user": "", "pass": "", "vhost": "" },
   "plugins": [
-    {
-      "name": "logs"
-    },
-    {
-      "name": "webbuilder",
-      "ui": "local"
-    },
-    {
-      "name": "cards",
-      "ui": "local"
-    },
-    {
-      "name": "products",
-      "ui": "local"
-    },
-    {
-      "name": "segments",
-      "ui": "local"
-    }
+    { "name": "logs" },
+    { "name": "webbuilder", "ui": "local" },
+    { "name": "cards", "ui": "local" },
+    { "name": "products", "ui": "local" },
+    { "name": "segments", "ui": "local" },
+    { "name": "menu", "ui": "local" }
   ]
 }
