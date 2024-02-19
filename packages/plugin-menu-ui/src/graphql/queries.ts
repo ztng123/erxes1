@@ -7,7 +7,10 @@ const list = `
       createdAt
       checked
       typeId
-      currentType{
+      title
+      content
+      showTitle
+      currentType {
         _id
         name
       }

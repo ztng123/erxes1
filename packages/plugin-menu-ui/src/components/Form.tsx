@@ -20,13 +20,14 @@ type Props = {
   menu?: IMenu;
   menus?: IMenu[];
   types?: IType[];
+  edit: (menu: IMenu) => void;
 } & ICommonFormProps;
 
 type State = {
   expiryDate?: Date;
-  title?: String;
-  content?: String;
-  showTitle?: Boolean;
+  title?: string;
+  content?: string;
+  showTitle?: boolean;
 };
 
 type IItem = {
@@ -101,6 +102,33 @@ class FormComponent extends React.Component<Props & ICommonFormProps, State> {
     return result;
   };
 
+  // 'Save' 버튼 클릭 이벤트 핸들러
+  handleSubmit = e => {
+    e.preventDefault(); // 폼 제출 기본 동작 방지
+
+    const { menu, afterSave } = this.props;
+    const { expiryDate, title, content, showTitle } = this.state;
+
+    // edit 함수 호출을 위한 데이터 준비
+    if (menu) {
+      const updatedMenu = {
+        _id: menu._id,
+        title,
+        content,
+        showTitle,
+        expiryDate
+      };
+
+      // edit 함수 호출
+      this.props.edit(updatedMenu);
+    }
+
+    // 성공적으로 저장된 후에 호출할 콜백 함수 (옵셔널)
+    if (afterSave) {
+      afterSave();
+    }
+  };
+
   renderContent = (formProps: IFormProps) => {
     const { expiryDate, title, content, showTitle } = this.state;
     const { menu, types, afterSave, closeModal, renderButton } = this.props;
@@ -156,7 +184,6 @@ class FormComponent extends React.Component<Props & ICommonFormProps, State> {
           <Button btnStyle="simple" onClick={closeModal} icon="times-circle">
             Cancel
           </Button>
-
           {renderButton({
             passedName: 'menu',
             values: this.generateDoc(formProps.values),
