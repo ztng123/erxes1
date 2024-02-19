@@ -7,9 +7,9 @@ export interface IMenu {
   checked?: boolean;
   typeId?: string;
   currentType?: IType;
-  title?: String;
-  content?: String;
-  showTitle?: Boolean;
+  title?: string;
+  content?: string;
+  showTitle?: boolean;
 }
 
 export interface IType {
@@ -37,9 +37,9 @@ export type MutationVariables = {
   expiryDate?: Date;
   checked?: boolean;
   type?: string;
-  title?: String;
-  content?: String;
-  showTitle?: Boolean;
+  title?: string;
+  content?: string;
+  showTitle?: boolean;
 };
 export type AddMutationResponse = {
   addMutation: (params: { variables: MutationVariables }) => Promise<any>;

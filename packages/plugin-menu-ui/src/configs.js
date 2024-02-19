@@ -1,14 +1,22 @@
 module.exports = {
-  name: 'menu',
-  port: 3017,
-  scope: 'menu',
+  srcDir: __dirname,
+  name: "menu",
+  port: 4012,
+  scope: "menu",
   exposes: {
-    './routes': './src/routes.tsx'
+    "./routes": "./src/routes.tsx",
   },
   routes: {
-    url: 'http://localhost:3017/remoteEntry.js',
-    scope: 'menu',
-    module: './routes'
+    url: "http://localhost:4012/remoteEntry.js",
+    scope: "menu",
+    module: "./routes",
   },
-  menus:[{"text":"Menus","url":"/menus","icon":"icon-star","location":"mainNavigation"}]
+  menus: [
+    {
+      text: "Menus",
+      url: "/menus",
+      icon: "icon-star",
+      location: "mainNavigation",
+    },
+  ],
 };
