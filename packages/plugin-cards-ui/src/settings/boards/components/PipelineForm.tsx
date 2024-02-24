@@ -183,7 +183,7 @@ class PipelineForm extends React.Component<Props, State> {
       <>
         <FormGroup>
           <SelectMemberStyled zIndex={2003}>
-            <ControlLabel>Members</ControlLabel>
+            <ControlLabel>{__('Members')}</ControlLabel>
 
             <SelectTeamMembers
               label="Choose members"
@@ -237,11 +237,11 @@ class PipelineForm extends React.Component<Props, State> {
       <FormGroup>
         <SelectMemberStyled>
           <ControlLabel>
-            Users eligible to see all {this.props.type}
+            {__('Users eligible to see all')} {__(this.props.type)}
           </ControlLabel>
 
           <SelectTeamMembers
-            label="Choose members"
+            label={__('Choose members')}
             name="excludeCheckUserIds"
             initialValue={excludeCheckUserIds}
             onSelect={this.onChangeDominantUsers}
@@ -263,7 +263,7 @@ class PipelineForm extends React.Component<Props, State> {
 
     return (
       <FormGroup>
-        <ControlLabel required={true}>Board</ControlLabel>
+        <ControlLabel required={true}>{__('Board')}</ControlLabel>
         <Select
           placeholder={__('Choose a board')}
           value={this.state.boardId}
@@ -297,7 +297,7 @@ class PipelineForm extends React.Component<Props, State> {
 
     return (
       <FormGroup>
-        <ControlLabel>Tags</ControlLabel>
+        <ControlLabel>{__('Tags')}</ControlLabel>
         <Select
           placeholder={__('Choose a tag')}
           value={this.state.tagId}
@@ -340,7 +340,7 @@ class PipelineForm extends React.Component<Props, State> {
       <div id="manage-pipeline-modal">
         <Modal.Header closeButton={true}>
           <Modal.Title>
-            {pipeline ? `Edit ${pipelineName}` : `Add ${pipelineName}`}
+            {__(pipeline ? `Edit ${pipelineName}` : `Add ${pipelineName}`)}
           </Modal.Title>
         </Modal.Header>
 
@@ -348,7 +348,7 @@ class PipelineForm extends React.Component<Props, State> {
           <FlexContent>
             <FlexItem count={4}>
               <FormGroup>
-                <ControlLabel required={true}>Name</ControlLabel>
+                <ControlLabel required={true}>{__('Name')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="name"
@@ -365,7 +365,7 @@ class PipelineForm extends React.Component<Props, State> {
           <Flex>
             <ExpandWrapper>
               <FormGroup>
-                <ControlLabel required={true}>Visibility</ControlLabel>
+                <ControlLabel required={true}>{__('Visibility')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="visibility"
@@ -379,7 +379,7 @@ class PipelineForm extends React.Component<Props, State> {
               </FormGroup>
             </ExpandWrapper>
             <FormGroup>
-              <ControlLabel>Background</ControlLabel>
+              <ControlLabel>{__('Background')}</ControlLabel>
               <div>
                 <OverlayTrigger
                   trigger="click"
@@ -410,7 +410,7 @@ class PipelineForm extends React.Component<Props, State> {
               <FlexItem>
                 <ControlLabel>
                   {__(`Show only the user's assigned(created)`)}{' '}
-                  {this.props.type}
+                  {__(this.props.type)}
                 </ControlLabel>
                 <span style={{ marginLeft: '10px' }}>
                   <FormControl
@@ -422,8 +422,8 @@ class PipelineForm extends React.Component<Props, State> {
               </FlexItem>
               <FlexItem>
                 <ControlLabel>
-                  {__(`Show only user’s assigned (created)`)} {this.props.type}{' '}
-                  {__(`by department`)}
+                  {__(`Show only the user's assigned(created)`)}{' '}
+                  {__(this.props.type)} {__(`by department`)}
                 </ControlLabel>
                 <span style={{ marginLeft: '10px' }}>
                   <FormControl
@@ -439,7 +439,7 @@ class PipelineForm extends React.Component<Props, State> {
           {this.renderDominantUsers()}
 
           <FormGroup>
-            <ControlLabel>Stages</ControlLabel>
+            <ControlLabel>{__('Stages')}</ControlLabel>
             <div id="stages-in-pipeline-form">
               <Stages
                 options={options}
@@ -458,7 +458,7 @@ class PipelineForm extends React.Component<Props, State> {
               icon="times-circle"
               onClick={closeModal}
             >
-              Cancel
+              {__('Cancel')}
             </Button>
 
             {renderButton({
@@ -467,7 +467,8 @@ class PipelineForm extends React.Component<Props, State> {
               isSubmitted,
               callback: closeModal,
               object: pipeline,
-              confirmationUpdate: true
+              confirmationUpdate: true,
+              text: __('Submit')
             })}
           </Modal.Footer>
         </Modal.Body>

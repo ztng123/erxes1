@@ -13,7 +13,7 @@ module.exports = {
   },
   menus: [
     {
-      text: "Menus",
+      text: "Help",
       url: "/menus",
       icon: "icon-star",
       location: "mainNavigation",

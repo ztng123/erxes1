@@ -6,7 +6,8 @@ import {
 import { IBoard, IPipeline } from '@erxes/ui-cards/src/boards/types';
 import { IButtonMutateProps, IRouterProps } from '@erxes/ui/src/types';
 import { Link, withRouter } from 'react-router-dom';
-import { __, router } from 'coreui/utils';
+import { __, generateTree } from 'coreui/utils';
+import { router } from '@erxes/ui/src/utils/core';
 import { BarItems } from '@erxes/ui/src/layout/styles';
 import Button from '@erxes/ui/src/components/Button';
 import EmptyContent from '@erxes/ui/src/components/empty/EmptyContent';
@@ -267,7 +268,7 @@ class Pipelines extends React.Component<Props, State> {
           icon="plus-circle"
           onClick={this.addPipeline}
         >
-          Add {pipelineName}
+          {__('Add')} {__(pipelineName)}
         </Button>
       </BarItems>
     );

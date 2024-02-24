@@ -78,33 +78,20 @@ const ListContainer = (props: FinalProps) => {
   };
 
   const edit = menu => {
-    try {
-      console.log('edit function called');
-      const menuData = {
+    editMutation({
+      variables: {
         _id: menu._id,
         name: menu.name,
         checked: menu.checked,
         expiryDate: menu.expiryDate,
-        typeId: menu.typeId,
-        title: menu.title,
-        content: menu.content,
-        showTitle: menu.showTitle
-      };
-      console.log(JSON.stringify(menuData, null, 2));
-
-      const sanitizedMenuData = JSON.parse(JSON.stringify(menuData));
-
-      editMutation({
-        variables: sanitizedMenuData
+        type: menu.type
+      }
+    })
+      .then(() => {
+        Alert.success('Successfully updated an item');
+        listQuery.refetch();
       })
-        .then(() => {
-          Alert.success('Successfully updated an item');
-          listQuery.refetch();
-        })
-        .catch(e => Alert.error(e.message));
-    } catch (e) {
-      console.error('Edit function error:', e);
-    }
+      .catch(e => Alert.error(e.message));
   };
 
   const updatedProps = {

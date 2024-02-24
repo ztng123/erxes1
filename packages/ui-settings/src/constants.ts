@@ -1,9 +1,9 @@
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 
 export const EMPTY_IMPORT_CONTENT = {
   steps: [
     {
-      title: 'Export your data',
+      title: __('Export your data'),
       description: __(
         'Export your data from your previous software or have your data sheet (csv, xls) ready'
       )
@@ -49,7 +49,7 @@ export const EMPTY_IMPORT_CONTENT = {
       )}`,
       url: '/settings/importHistories',
       isOutside: false,
-      urlText: 'Go to Customers',
+      urlText: __('Go to Customers'),
       icon: 'export'
     }
   ]
@@ -69,7 +69,7 @@ export const EMPTY_SEGMENT_CONTENT = {
         'If you wish to segment by any properties that are not available on erxes, make sure you’ve already created them'
       ),
       url: '/settings/properties?type=contacts:customer',
-      urlText: 'Go to Properties'
+      urlText: __('Go to Properties')
     },
     {
       title: __('Choose the Contact Type'),
@@ -103,14 +103,15 @@ export const EMPTY_NEW_SEGMENT_CONTENT = {
     },
     {
       title: __('Create your Segment'),
-      description:
+      description: __(
         'Select the property/event you want to filter by, select one of the operators and type in or select the value from the dropdown menu.'
+      )
     },
     {
       title: 'See our documentation',
       description: 'Walk through step by step instructions.',
       url: 'https://www.erxes.org/user/segments/',
-      urlText: 'Go to the docs',
+      urlText: __('Go to the docs'),
       target: '_blank',
       isOutside: true
     }
@@ -125,8 +126,9 @@ export const EMPTY_CONTENT_SCRIPT = {
   steps: [
     {
       title: 'Generate the combination of scripts',
-      description:
+      description: __(
         'Click on “New Script” and choose which widgets you’re going to display in a single page'
+      )
     },
     {
       title: 'Install the script',
@@ -147,7 +149,7 @@ export const EMPTY_CONTENT_POPUPS = {
       title: __('Create Form'),
       description: __('Fill out the details and create your form'),
       url: '/forms/create',
-      urlText: 'Create Form'
+      urlText: __('Create Form')
     },
     {
       title: 'Install the script',
@@ -170,13 +172,13 @@ export const EMPTY_CONTENT_FORUMS = {
       title: __('Create Posts'),
       description: __('Fill out the details and create your post'),
       url: '/forums/posts',
-      urlText: 'Create Posts'
+      urlText: __('Create Posts')
     },
     {
       title: __('Create Pages'),
       description: __('Fill out the details and create your page'),
       url: '/forums/pages',
-      urlText: 'Create Pages'
+      urlText: __('Create Pages')
     }
   ]
 };
@@ -190,8 +192,9 @@ export const EMPTY_CONTENT_ENGAGE = {
   steps: [
     {
       title: 'Email',
-      description:
-        "<ul><li><strong><a href='/settings/campaign-configs'>Verify</a> your email address</strong> <br/> Make sure it is the same as one of your team members</li><li><strong>Integrate that email address with <a href='/settings/integrations#showImapModal=true'>IMAP</a></strong> <br/> Connect your existing emails address as an integration</li><li><strong>Prepare your contacts by Segment / Tag / Brand</strong> <br/> For more targeted marketing, create a <a href='/segments/new/customer'>Segment</a></li></ul>",
+      description: __(
+        "<ul><li><strong><a href='/settings/campaign-configs'>Verify</a> your email address</strong> <br/> Make sure it is the same as one of your team members</li><li><strong>Integrate that email address with <a href='/settings/integrations#showImapModal=true'>IMAP</a></strong> <br/> Connect your existing emails address as an integration</li><li><strong>Prepare your contacts by Segment / Tag / Brand</strong> <br/> For more targeted marketing, create a <a href='/segments/new/customer'>Segment</a></li></ul>"
+      ),
       html: true,
       icon: 'envelope-edit'
     },
@@ -202,13 +205,14 @@ export const EMPTY_CONTENT_ENGAGE = {
       ),
       html: true,
       url: '/segments/new/customer',
-      urlText: 'Create a Segment',
+      urlText: __('Create a Segment'),
       icon: 'comment-edit'
     },
     {
       title: 'SMS',
-      description:
-        "<ul><li><strong><a href='/settings/campaign-configs'>Claim</a> your phone number</strong> <br/> Make sure you assigned it to a team member</li><li><strong>Prepare your contacts</strong> <br/> Check the <a href='https://en.wikipedia.org/wiki/E.164' target='_blank'>format</a>, verification status, and primary phone state</li><li><strong><a href='/segments/new/customer'>Create</a> a segment</strong> <br/> Filter all contacts with valid phone numbers and other properties</li></ul>",
+      description: __(
+        "<ul><li><strong><a href='/settings/campaign-configs'>Claim</a> your phone number</strong> <br/> Make sure you assigned it to a team member</li><li><strong>Prepare your contacts</strong> <br/> Check the <a href='https://en.wikipedia.org/wiki/E.164' target='_blank'>format</a>, verification status, and primary phone state</li><li><strong><a href='/segments/new/customer'>Create</a> a segment</strong> <br/> Filter all contacts with valid phone numbers and other properties</li></ul>"
+      ),
       html: true,
       icon: 'comment-alt-message'
     }
@@ -249,7 +253,7 @@ export const EMPTY_CONTENT_MESSENGER = {
       title: __('Create a new messenger'),
       description: __('Click on “Add” and complete all the steps.'),
       url: '/settings/integrations/createMessenger',
-      urlText: 'Add Messenger'
+      urlText: __('Add Messenger')
     },
     {
       title: __('Display your Knowledgebase'),
@@ -257,7 +261,7 @@ export const EMPTY_CONTENT_MESSENGER = {
         'Click on “Add” of the Knowledgebase integration, if any, and complete the steps.'
       ),
       url: '/settings/integrations#showKBAddModal=true',
-      urlText: 'Add Knowledgebase'
+      urlText: __('Add Knowledgebase')
     },
     {
       title: __('Display your form'),
@@ -265,7 +269,7 @@ export const EMPTY_CONTENT_MESSENGER = {
         'Click on “Add” of the Popup integration,if any, and complete the steps.'
       ),
       url: '/settings/integrations#showPopupAddModal=true',
-      urlText: 'Add Popup'
+      urlText: __('Add Popup')
     },
     {
       title: __('Install the script'),
@@ -280,7 +284,7 @@ export const EMPTY_CONTENT_MESSENGER = {
       ),
       icon: 'exclamation-circle',
       url: '/settings/scripts',
-      urlText: 'Manange Scripts'
+      urlText: __('Manange Scripts')
     }
   ]
 };
@@ -295,7 +299,7 @@ export const EMPTY_CONTENT_CONTACTS = {
         'Use Import feature to bulk import all your previous Customers or Leads'
       ),
       url: '/settings/importHistories',
-      urlText: 'Go to Customer Import'
+      urlText: __('Go to Customer Import')
     },
     {
       title: __('Collect visitor information'),
@@ -303,7 +307,7 @@ export const EMPTY_CONTENT_CONTACTS = {
         'Create your erxes Messenger to start capturing Visitors'
       ),
       url: '/settings/integrations/createMessenger',
-      urlText: 'Create Messenger'
+      urlText: __('Create Messenger')
     },
     {
       title: __('Sync email contacts'),
@@ -311,7 +315,7 @@ export const EMPTY_CONTENT_CONTACTS = {
         'Integrate your email address to sync previous email Leads'
       ),
       url: '/settings/integrations',
-      urlText: 'Visit AppStore'
+      urlText: __('Visit AppStore')
     },
     {
       title: __('Start capturing social media contacts'),
@@ -319,13 +323,13 @@ export const EMPTY_CONTENT_CONTACTS = {
         'Integrate social media website to start capturing Leads'
       ),
       url: '/settings/integrations',
-      urlText: 'Visit AppStore'
+      urlText: __('Visit AppStore')
     },
     {
       title: __('Generate contacts through Forms'),
-      description: 'Create your forms and start collecting Leads',
+      description: __('Create your forms and start collecting Leads'),
       url: '/forms/create',
-      urlText: 'Create a Popup'
+      urlText: __('Create a Popup')
     }
   ]
 };
@@ -343,7 +347,7 @@ export const EMPTY_CONTENT_DEAL_PIPELINE = {
           'Tip: This could be equivalent to your brands and/or you can organize by year/project/etc'
         ) + '.',
       url: '/settings/boards/deal#showBoardModal=true',
-      urlText: 'Create a Board'
+      urlText: __('Create a Board')
     },
     {
       title: __('Start adding Pipelines to the Board'),
@@ -351,7 +355,7 @@ export const EMPTY_CONTENT_DEAL_PIPELINE = {
         __(
           'Tip: This could be a bit more granular than the Board and/or you can organize by period/project/etc'
         ) + '.',
-      urlText: 'Create a Pipeline',
+      urlText: __('Create a Pipeline'),
       url: '/settings/boards/deal#showPipelineModal=true'
     }
   ]
@@ -370,7 +374,7 @@ export const EMPTY_CONTENT_PURCHASE_PIPELINE = {
           'Tip: This could be equivalent to your brands and/or you can organize by year/project/etc'
         ) + '.',
       url: '/settings/boards/purchase#showBoardModal=true',
-      urlText: 'Create a Board'
+      urlText: __('Create a Board')
     },
     {
       title: __('Start adding Purchase to the Board'),
@@ -378,7 +382,7 @@ export const EMPTY_CONTENT_PURCHASE_PIPELINE = {
         __(
           'Tip: This could be a bit more granular than the Board and/or you can organize by period/project/etc'
         ) + '.',
-      urlText: 'Create a Purchase',
+      urlText: __('Create a Purchase'),
       url: '/settings/boards/purchase#showPipelineModal=true'
     }
   ]
@@ -396,14 +400,14 @@ export const EMPTY_CONTENT_TASK_PIPELINE = {
         'Tip: This could be equivalent to your departments and/or you can organize by year/project/etc.'
       ),
       url: '/settings/boards/task#showBoardModal=true',
-      urlText: 'Create a Board'
+      urlText: __('Create a Board')
     },
     {
       title: __('Start adding Pipelines to the Board'),
       description: __(
         'Tip: This could be a bit more granular than the Board and/or you can organize by period/project/etc.'
       ),
-      urlText: 'Create a Pipeline',
+      urlText: __('Create a Pipeline'),
       url: '/settings/boards/task#showPipelineModal=true'
     }
   ]

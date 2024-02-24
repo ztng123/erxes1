@@ -1,30 +1,30 @@
-import { ColorPick, ColorPicker } from '@erxes/ui/src/styles/main';
-import { IBoard, IPipeline, IStage } from '@erxes/ui-cards/src/boards/types';
-import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
-import { __, generateTree } from 'coreui/utils';
-import BoardNumberConfigs from './numberConfig/BoardNumberConfigs';
-import Button from '@erxes/ui/src/components/Button';
-import { COLORS } from '@erxes/ui/src/constants/colors';
-import ControlLabel from '@erxes/ui/src/components/form/Label';
-import { ExpandWrapper } from '@erxes/ui-settings/src/styles';
-import { Flex } from '@erxes/ui/src/styles/main';
-import Form from '@erxes/ui/src/components/form/Form';
-import FormControl from '@erxes/ui/src/components/form/Control';
-import FormGroup from '@erxes/ui/src/components/form/Group';
-import { IDepartment } from '@erxes/ui/src/team/types';
-import { IOption } from '../types';
-import Modal from 'react-bootstrap/Modal';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
-import Popover from 'react-bootstrap/Popover';
-import React from 'react';
-import Select from 'react-select-plus';
-import { SelectMemberStyled } from '@erxes/ui-cards/src/settings/boards/styles';
-import SelectTeamMembers from '@erxes/ui/src/team/containers/SelectTeamMembers';
-import Stages from './Stages';
-import { FlexContent, FlexItem } from '@erxes/ui/src/layout/styles';
-import { ITag } from '@erxes/ui-tags/src/types';
-import TwitterPicker from 'react-color/lib/Twitter';
-import { colors } from '@erxes/ui/src/styles';
+import { ColorPick, ColorPicker } from "@erxes/ui/src/styles/main";
+import { IBoard, IPipeline, IStage } from "@erxes/ui-cards/src/boards/types";
+import { IButtonMutateProps, IFormProps } from "@erxes/ui/src/types";
+import { __, generateTree } from "@erxes/ui/src/utils/core";
+import BoardNumberConfigs from "./numberConfig/BoardNumberConfigs";
+import Button from "@erxes/ui/src/components/Button";
+import { COLORS } from "@erxes/ui/src/constants/colors";
+import ControlLabel from "@erxes/ui/src/components/form/Label";
+import { ExpandWrapper } from "@erxes/ui-settings/src/styles";
+import { Flex } from "@erxes/ui/src/styles/main";
+import Form from "@erxes/ui/src/components/form/Form";
+import FormControl from "@erxes/ui/src/components/form/Control";
+import FormGroup from "@erxes/ui/src/components/form/Group";
+import { IDepartment } from "@erxes/ui/src/team/types";
+import { IOption } from "../types";
+import Modal from "react-bootstrap/Modal";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import Popover from "react-bootstrap/Popover";
+import React from "react";
+import Select from "react-select-plus";
+import { SelectMemberStyled } from "@erxes/ui-cards/src/settings/boards/styles";
+import SelectTeamMembers from "@erxes/ui/src/team/containers/SelectTeamMembers";
+import Stages from "./Stages";
+import { FlexContent, FlexItem } from "@erxes/ui/src/layout/styles";
+import { ITag } from "@erxes/ui-tags/src/types";
+import TwitterPicker from "react-color/lib/Twitter";
+import { colors } from "@erxes/ui/src/styles";
 
 type Props = {
   type: string;
@@ -64,49 +64,49 @@ class PipelineForm extends React.Component<Props, State> {
     const { pipeline, stages } = this.props;
 
     this.state = {
-      stages: (stages || []).map(stage => ({ ...stage })),
-      visibility: pipeline ? pipeline.visibility || 'public' : 'public',
+      stages: (stages || []).map((stage) => ({ ...stage })),
+      visibility: pipeline ? pipeline.visibility || "public" : "public",
       selectedMemberIds: pipeline ? pipeline.memberIds || [] : [],
       backgroundColor:
         (pipeline && pipeline.bgColor) || colors.colorPrimaryDark,
       isCheckUser: pipeline ? pipeline.isCheckUser || false : false,
       isCheckDepartment: pipeline ? pipeline.isCheckDepartment || false : false,
       excludeCheckUserIds: pipeline ? pipeline.excludeCheckUserIds || [] : [],
-      boardId: props.boardId || '',
-      tagId: pipeline ? pipeline.tagId : '',
-      numberConfig: (pipeline && pipeline.numberConfig) || '',
-      numberSize: (pipeline && pipeline.numberSize) || '',
-      departmentIds: pipeline ? pipeline.departmentIds || [] : []
+      boardId: props.boardId || "",
+      tagId: pipeline ? pipeline.tagId : "",
+      numberConfig: (pipeline && pipeline.numberConfig) || "",
+      numberSize: (pipeline && pipeline.numberSize) || "",
+      departmentIds: pipeline ? pipeline.departmentIds || [] : [],
     };
   }
 
-  onChangeStages = stages => {
+  onChangeStages = (stages) => {
     this.setState({ stages });
   };
 
   onChangeVisibility = (e: React.FormEvent<HTMLElement>) => {
     this.setState({
-      visibility: (e.currentTarget as HTMLInputElement).value
+      visibility: (e.currentTarget as HTMLInputElement).value,
     });
   };
 
-  onChangeMembers = items => {
+  onChangeMembers = (items) => {
     this.setState({ selectedMemberIds: items });
   };
 
-  onChangeDepartments = options => {
-    this.setState({ departmentIds: (options || []).map(o => o.value) });
+  onChangeDepartments = (options) => {
+    this.setState({ departmentIds: (options || []).map((o) => o.value) });
   };
 
-  onChangeDominantUsers = items => {
+  onChangeDominantUsers = (items) => {
     this.setState({ excludeCheckUserIds: items });
   };
 
-  collectValues = items => {
-    return items.map(item => item.value);
+  collectValues = (items) => {
+    return items.map((item) => item.value);
   };
 
-  onColorChange = e => {
+  onColorChange = (e) => {
     this.setState({ backgroundColor: e.hex });
   };
 
@@ -131,7 +131,7 @@ class PipelineForm extends React.Component<Props, State> {
       numberConfig,
       numberSize,
       departmentIds,
-      tagId
+      tagId,
     } = this.state;
 
     const finalValues = values;
@@ -145,7 +145,7 @@ class PipelineForm extends React.Component<Props, State> {
       ...extraFields,
       type,
       boardId,
-      stages: stages.filter(el => el.name),
+      stages: stages.filter((el) => el.name),
       memberIds: selectedMemberIds,
       bgColor: backgroundColor,
       isCheckUser,
@@ -154,7 +154,7 @@ class PipelineForm extends React.Component<Props, State> {
       numberConfig,
       numberSize,
       departmentIds,
-      tagId
+      tagId,
     };
   };
 
@@ -165,8 +165,8 @@ class PipelineForm extends React.Component<Props, State> {
           onChange={(key: string, conf: string) =>
             this.onChangeNumber(key, conf)
           }
-          config={this.state.numberConfig || ''}
-          size={this.state.numberSize || ''}
+          config={this.state.numberConfig || ""}
+          size={this.state.numberSize || ""}
         />
       </FormGroup>
     );
@@ -175,7 +175,7 @@ class PipelineForm extends React.Component<Props, State> {
   renderSelectMembers() {
     const { visibility, selectedMemberIds, departmentIds } = this.state;
 
-    if (visibility === 'public') {
+    if (visibility === "public") {
       return;
     }
 
@@ -183,7 +183,7 @@ class PipelineForm extends React.Component<Props, State> {
       <>
         <FormGroup>
           <SelectMemberStyled zIndex={2003}>
-            <ControlLabel>Members</ControlLabel>
+            <ControlLabel>{__("Members")}</ControlLabel>
 
             <SelectTeamMembers
               label="Choose members"
@@ -203,11 +203,11 @@ class PipelineForm extends React.Component<Props, State> {
                 null,
                 (node, level) => ({
                   value: node._id,
-                  label: `${'---'.repeat(level)} ${node.title}`
+                  label: `${"---".repeat(level)} ${node.title}`,
                 })
               )}
               onChange={this.onChangeDepartments.bind(this)}
-              placeholder={__('Choose department ...')}
+              placeholder={__("Choose department ...")}
               multi={true}
             />
           </SelectMemberStyled>
@@ -216,12 +216,12 @@ class PipelineForm extends React.Component<Props, State> {
     );
   }
 
-  onChangeIsCheckUser = e => {
+  onChangeIsCheckUser = (e) => {
     const isChecked = (e.currentTarget as HTMLInputElement).checked;
     this.setState({ isCheckUser: isChecked });
   };
 
-  onChangeIsCheckDepartment = e => {
+  onChangeIsCheckDepartment = (e) => {
     const isChecked = (e.currentTarget as HTMLInputElement).checked;
     this.setState({ isCheckDepartment: isChecked });
   };
@@ -254,18 +254,18 @@ class PipelineForm extends React.Component<Props, State> {
   renderBoards() {
     const { boards } = this.props;
 
-    const boardOptions = boards.map(board => ({
+    const boardOptions = boards.map((board) => ({
       value: board._id,
-      label: board.name
+      label: board.name,
     }));
 
-    const onChange = item => this.setState({ boardId: item.value });
+    const onChange = (item) => this.setState({ boardId: item.value });
 
     return (
       <FormGroup>
-        <ControlLabel required={true}>Board</ControlLabel>
+        <ControlLabel required={true}>{__("Board")}</ControlLabel>
         <Select
-          placeholder={__('Choose a board')}
+          placeholder={__("Choose a board")}
           value={this.state.boardId}
           options={boardOptions}
           onChange={onChange}
@@ -278,28 +278,28 @@ class PipelineForm extends React.Component<Props, State> {
   renderTags() {
     const { tags } = this.props;
 
-    const filteredTags = tags && tags.filter(tag => !tag.parentId);
+    const filteredTags = tags && tags.filter((tag) => !tag.parentId);
 
-    const generateOptions = items => {
+    const generateOptions = (items) => {
       if (!items || items.length === 0) {
         return null;
       }
 
-      return items.map(item => {
+      return items.map((item) => {
         return {
           value: item._id,
-          label: item.name
+          label: item.name,
         };
       });
     };
 
-    const onChange = item => this.setState({ tagId: item.value });
+    const onChange = (item) => this.setState({ tagId: item.value });
 
     return (
       <FormGroup>
-        <ControlLabel>Tags</ControlLabel>
+        <ControlLabel>{__("Tags")}</ControlLabel>
         <Select
-          placeholder={__('Choose a tag')}
+          placeholder={__("Choose a tag")}
           value={this.state.tagId}
           options={generateOptions(filteredTags)}
           clearable={false}
@@ -315,14 +315,14 @@ class PipelineForm extends React.Component<Props, State> {
       renderButton,
       closeModal,
       options,
-      renderExtraFields
+      renderExtraFields,
     } = this.props;
     const { values, isSubmitted } = formProps;
     const object = pipeline || ({} as IPipeline);
     const pipelineName =
       options && options.pipelineName
         ? options.pipelineName.toLowerCase()
-        : 'pipeline';
+        : "pipeline";
 
     const popoverBottom = (
       <Popover id="color-picker">
@@ -348,7 +348,7 @@ class PipelineForm extends React.Component<Props, State> {
           <FlexContent>
             <FlexItem count={4}>
               <FormGroup>
-                <ControlLabel required={true}>Name</ControlLabel>
+                <ControlLabel required={true}>{__("Name")}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="name"
@@ -365,7 +365,7 @@ class PipelineForm extends React.Component<Props, State> {
           <Flex>
             <ExpandWrapper>
               <FormGroup>
-                <ControlLabel required={true}>Visibility</ControlLabel>
+                <ControlLabel required={true}>{__("Visibility")}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="visibility"
@@ -373,13 +373,13 @@ class PipelineForm extends React.Component<Props, State> {
                   value={this.state.visibility}
                   onChange={this.onChangeVisibility}
                 >
-                  <option value="public">{__('Public')}</option>
-                  <option value="private">{__('Private')}</option>
+                  <option value="public">{__("Public")}</option>
+                  <option value="private">{__("Private")}</option>
                 </FormControl>
               </FormGroup>
             </ExpandWrapper>
             <FormGroup>
-              <ControlLabel>Background</ControlLabel>
+              <ControlLabel>{__("Background")}</ControlLabel>
               <div>
                 <OverlayTrigger
                   trigger="click"
@@ -409,10 +409,9 @@ class PipelineForm extends React.Component<Props, State> {
             <FlexContent>
               <FlexItem>
                 <ControlLabel>
-                  {__(`Show only the user's assigned(created)`)}{' '}
-                  {this.props.type}
+                  {__(`Visibility`)} {this.props.type}
                 </ControlLabel>
-                <span style={{ marginLeft: '10px' }}>
+                <span style={{ marginLeft: "10px" }}>
                   <FormControl
                     componentClass="checkbox"
                     checked={this.state.isCheckUser}
@@ -422,10 +421,11 @@ class PipelineForm extends React.Component<Props, State> {
               </FlexItem>
               <FlexItem>
                 <ControlLabel>
-                  {__(`Show only user’s assigned (created)`)} {this.props.type}{' '}
+                  {__(`Show only the user's assigned(created)`)}{" "}
+                  {this.props.type}
                   {__(`by department`)}
                 </ControlLabel>
-                <span style={{ marginLeft: '10px' }}>
+                <span style={{ marginLeft: "10px" }}>
                   <FormControl
                     componentClass="checkbox"
                     checked={this.state.isCheckDepartment}
@@ -439,7 +439,7 @@ class PipelineForm extends React.Component<Props, State> {
           {this.renderDominantUsers()}
 
           <FormGroup>
-            <ControlLabel>Stages</ControlLabel>
+            <ControlLabel>{__("Stages")}</ControlLabel>
             <div id="stages-in-pipeline-form">
               <Stages
                 options={options}
@@ -467,7 +467,7 @@ class PipelineForm extends React.Component<Props, State> {
               isSubmitted,
               callback: closeModal,
               object: pipeline,
-              confirmationUpdate: true
+              confirmationUpdate: true,
             })}
           </Modal.Footer>
         </Modal.Body>

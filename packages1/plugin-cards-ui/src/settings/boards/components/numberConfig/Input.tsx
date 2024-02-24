@@ -1,15 +1,15 @@
 import {
   ControlLabel,
   FormControl,
-  FormGroup
-} from '@erxes/ui/src/components/form';
-import { FlexContent, FlexItem } from '@erxes/ui/src/layout/styles';
+  FormGroup,
+} from "@erxes/ui/src/components/form";
+import { FlexContent, FlexItem } from "@erxes/ui/src/layout/styles";
 
-import { Alert } from '@erxes/ui/src/utils';
-import Attribution from './Attribution';
-import { BoardHeader } from '@erxes/ui-cards/src/settings/boards/styles';
-import React from 'react';
-
+import { Alert } from "@erxes/ui/src/utils";
+import Attribution from "./Attribution";
+import { BoardHeader } from "@erxes/ui-cards/src/settings/boards/styles";
+import React from "react";
+import { __ } from "@erxes/ui/src/utils/core";
 type Props = {
   onChange: (key: string, config: string) => void;
   config: string;
@@ -23,34 +23,34 @@ function PlaceHolderInput(props: Props) {
 
   const onChangeNumber = (conf: string) => {
     if (8 < parseInt(conf, 10) || parseInt(conf, 10) < 1) {
-      return Alert.error('Fractional part number must be from 1 to 8');
+      return Alert.error("Fractional part number must be from 1 to 8");
     }
 
-    onChange('numberSize', conf);
+    onChange("numberSize", conf);
   };
 
   const onChangeConfig = (conf: string) => {
-    if (conf.startsWith(' ')) {
+    if (conf.startsWith(" ")) {
       return Alert.error(
         `Please make sure the number configuration doesn't start with a space`
       );
     }
 
-    onChange('numberConfig', conf);
+    onChange("numberConfig", conf);
   };
 
   const renderAttribution = () => {
     return (
       <Attribution
         config={config}
-        setConfig={conf => onChangeConfig(conf)}
+        setConfig={(conf) => onChangeConfig(conf)}
         attributions={attributions}
       />
     );
   };
 
   const onKeyPress = (e: React.KeyboardEvent) => {
-    if (['Backspace', 'Delete'].includes(e.key)) {
+    if (["Backspace", "Delete"].includes(e.key)) {
       e.preventDefault();
 
       const target = e.target as HTMLInputElement;
@@ -74,7 +74,7 @@ function PlaceHolderInput(props: Props) {
         index += 1;
       }
 
-      const deletes = Object.keys(by).filter(key => {
+      const deletes = Object.keys(by).filter((key) => {
         const val = by[key];
 
         if (start === end && val.min < start && val.max < start) {
@@ -92,7 +92,7 @@ function PlaceHolderInput(props: Props) {
         return key;
       });
 
-      config = matches.filter((_m, i) => !deletes.includes(String(i))).join('');
+      config = matches.filter((_m, i) => !deletes.includes(String(i))).join("");
 
       onChangeConfig(config);
     }
@@ -107,7 +107,7 @@ function PlaceHolderInput(props: Props) {
         <BoardHeader>
           <FormGroup>
             <div className="header-row">
-              <ControlLabel>Number configuration</ControlLabel>
+              <ControlLabel>{__("Number configuration")}</ControlLabel>
               <div>{renderAttribution()}</div>
             </div>
             <FormControl
@@ -122,7 +122,7 @@ function PlaceHolderInput(props: Props) {
       </FlexItem>
       <FlexItem count={1} hasSpace={true}>
         <FormGroup>
-          <ControlLabel>Fractional part</ControlLabel>
+          <ControlLabel>{__("Fractional part")}</ControlLabel>
           <FormControl
             type="number"
             onChange={(e: any) => onChangeNumber(e.target.value)}
