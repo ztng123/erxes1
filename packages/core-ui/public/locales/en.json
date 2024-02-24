@@ -2295,5 +2295,16 @@
   "seeUserMovement": "See User Movement of label",
   "When a team member has all permissions of a specific module &": "When a team member has all permissions of a specific module &",
   " can't perform some actions": " can't perform some actions",
-  ", then this command comes to the rescue.": ", then this command comes to the rescue."
+  ", then this command comes to the rescue.": ", then this command comes to the rescue.",
+  "Fractional part": "Fractional part",
+  "Choose an attribute or any number you prefer": "Choose an attribute or any number you prefer",
+  "Number configuration": "Number configuration",
+  "Year": "Year",
+  "Day": "Day",
+  "Dash": "Dash",
+  "Underscore": "Underscore",
+  "Slash": "Slash",
+  "Can edit members": "Can edit members",
+  "Can move members": "Can move members",
+  "by department": "by department"
 }

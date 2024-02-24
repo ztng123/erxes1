@@ -1,17 +1,17 @@
-import { IPipeline } from '@erxes/ui-cards/src/boards/types';
-import ActionButtons from '@erxes/ui/src/components/ActionButtons';
-import Button from '@erxes/ui/src/components/Button';
-import Tip from '@erxes/ui/src/components/Tip';
-import { __ } from '@erxes/ui/src/utils/core';
-import { IButtonMutateProps } from '@erxes/ui/src/types';
-import React from 'react';
-import PipelineForm from '../containers/PipelineForm';
-import { IOption } from '../types';
-import Label from '@erxes/ui/src/components/Label';
-import Icon from '@erxes/ui/src/components/Icon';
-import { DateWrapper } from '@erxes/ui-forms/src/forms/styles';
-import dayjs from 'dayjs';
-import { Capitalize } from '@erxes/ui-settings/src/permissions/styles';
+import { IPipeline } from "@erxes/ui-cards/src/boards/types";
+import ActionButtons from "@erxes/ui/src/components/ActionButtons";
+import Button from "@erxes/ui/src/components/Button";
+import Tip from "@erxes/ui/src/components/Tip";
+import { __ } from "@erxes/ui/src/utils/core";
+import { IButtonMutateProps } from "@erxes/ui/src/types";
+import React from "react";
+import PipelineForm from "../containers/PipelineForm";
+import { IOption } from "../types";
+import Label from "@erxes/ui/src/components/Label";
+import Icon from "@erxes/ui/src/components/Icon";
+import { DateWrapper } from "@erxes/ui-forms/src/forms/styles";
+import dayjs from "dayjs";
+import { Capitalize } from "@erxes/ui-settings/src/permissions/styles";
 
 type Props = {
   pipeline: IPipeline;
@@ -23,31 +23,34 @@ type Props = {
   type: string;
   options?: IOption;
 };
-
+console.log("hello");
+console.log(__("hello_world"));
 type State = {
   showModal: boolean;
 };
 
 class PipelineRow extends React.Component<Props, State> {
   constructor(props) {
+    console.log("hello");
+    console.log(__("hello_world"));
     super(props);
 
     this.state = {
-      showModal: false
+      showModal: false,
     };
   }
 
   renderArchiveAction() {
     const { archive, pipeline } = this.props;
 
-    if (pipeline.status === 'archived') {
+    if (pipeline.status === "archived") {
       return null;
     }
 
     const onClick = () => archive(pipeline._id, pipeline.status);
 
     return (
-      <Tip text={__('Archive')} placement="top">
+      <Tip text={__("Archive")} placement="top">
         <Button btnStyle="link" onClick={onClick} icon="archive-alt" />
       </Tip>
     );
@@ -56,14 +59,14 @@ class PipelineRow extends React.Component<Props, State> {
   renderUnarchiveAction() {
     const { archive, pipeline } = this.props;
 
-    if (!pipeline.status || pipeline.status === 'active') {
+    if (!pipeline.status || pipeline.status === "active") {
       return null;
     }
 
     const onClick = () => archive(pipeline._id, pipeline.status);
 
     return (
-      <Tip text={__('Unarchive')} placement="top">
+      <Tip text={__("Unarchive")} placement="top">
         <Button btnStyle="link" onClick={onClick} icon="redo" />
       </Tip>
     );
@@ -75,7 +78,7 @@ class PipelineRow extends React.Component<Props, State> {
     const onClick = () => remove(pipeline._id);
 
     return (
-      <Tip text={__('Delete')} placement="top">
+      <Tip text={__("Delete")} placement="top">
         <Button btnStyle="link" onClick={onClick} icon="times-circle" />
       </Tip>
     );
@@ -94,10 +97,10 @@ class PipelineRow extends React.Component<Props, State> {
 
     return (
       <>
-        <Tip text={__('Edit')} placement="top">
+        <Tip text={__("Edit")} placement="top">
           <Button btnStyle="link" onClick={edit} icon="edit-3" />
         </Tip>
-        <Tip text={__('Duplicate')} placement="top">
+        <Tip text={__("Duplicate")} placement="top">
           <Button btnStyle="link" onClick={duplicate} icon="copy-1" />
         </Tip>
       </>
@@ -117,7 +120,7 @@ class PipelineRow extends React.Component<Props, State> {
       <PipelineForm
         options={options}
         type={type}
-        boardId={pipeline.boardId || ''}
+        boardId={pipeline.boardId || ""}
         renderButton={renderButton}
         pipeline={pipeline}
         closeModal={closeModal}
@@ -131,18 +134,18 @@ class PipelineRow extends React.Component<Props, State> {
     const { createdUser } = pipeline;
 
     const labelStyle =
-      !pipeline.status || pipeline.status === 'active' ? 'success' : 'warning';
+      !pipeline.status || pipeline.status === "active" ? "success" : "warning";
 
     return (
       <tr>
         <td>{pipeline.name}</td>
         <td>
-          <Label lblStyle={labelStyle}>{pipeline.status || 'active'}</Label>
+          <Label lblStyle={labelStyle}>{pipeline.status || "active"}</Label>
         </td>
         <td>
           <DateWrapper>
-            <Icon icon="calender" />{' '}
-            {dayjs(pipeline.createdAt.toString().split('T')[0]).format('ll')}
+            <Icon icon="calender" />{" "}
+            {dayjs(pipeline.createdAt.toString().split("T")[0]).format("ll")}
           </DateWrapper>
         </td>
         <td>

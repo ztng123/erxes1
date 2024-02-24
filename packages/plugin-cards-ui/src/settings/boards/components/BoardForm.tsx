@@ -6,6 +6,7 @@ import FormGroup from '@erxes/ui/src/components/form/Group';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
 import { ModalFooter } from '@erxes/ui/src/styles/main';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
+import { __ } from 'coreui/utils';
 import React from 'react';
 
 type Props = {
@@ -39,7 +40,7 @@ class BoardForm extends React.Component<Props, {}> {
     return (
       <>
         <FormGroup>
-          <ControlLabel required={true}>Name</ControlLabel>
+          <ControlLabel required={true}>{__('Name')}</ControlLabel>
 
           <FormControl
             {...formProps}
@@ -57,7 +58,7 @@ class BoardForm extends React.Component<Props, {}> {
             icon="cancel-1"
             onClick={closeModal}
           >
-            Cancel
+            {__('Cancel')}
           </Button>
 
           {renderButton({

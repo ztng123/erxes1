@@ -3,7 +3,7 @@ import Button from '@erxes/ui/src/components/Button';
 import DataWithLoader from '@erxes/ui/src/components/DataWithLoader';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
 import { IButtonMutateProps } from '@erxes/ui/src/types';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __, generateTree } from 'coreui/utils';
 import Sidebar from '@erxes/ui/src/layout/components/Sidebar';
 import { SidebarList as List } from '@erxes/ui/src/layout/styles';
 import React from 'react';
@@ -49,7 +49,7 @@ class Boards extends React.Component<Props, {}> {
 
     const addBoard = (
       <Button btnStyle="success" icon="plus-circle" block={true}>
-        Add New {boardName}
+        {__('Add New')} {__(boardName)}
       </Button>
     );
 
@@ -60,7 +60,7 @@ class Boards extends React.Component<Props, {}> {
     return (
       <Header>
         <ModalTrigger
-          title={`New ${boardName}`}
+          title={__(`New ${boardName}`)}
           trigger={addBoard}
           autoOpenKey="showBoardModal"
           content={content}

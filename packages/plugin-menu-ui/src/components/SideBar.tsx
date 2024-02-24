@@ -1,7 +1,7 @@
-// SideBar.tsx
 import { __ } from '@erxes/ui/src/utils/core';
 import LeftSidebar from '@erxes/ui/src/layout/components/Sidebar';
 import { SidebarList } from '@erxes/ui/src/layout/styles';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { IType } from '../types';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
@@ -12,7 +12,6 @@ import { Header, SidebarListItem } from '@erxes/ui-settings/src/styles';
 import ActionButtons from '@erxes/ui/src/components/ActionButtons';
 import Tip from '@erxes/ui/src/components/Tip';
 import Icon from '@erxes/ui/src/components/Icon';
-import React, { useEffect, useState } from 'react';
 
 type Props = {
   renderButton: (props: IButtonMutateProps) => JSX.Element;
@@ -25,36 +24,6 @@ type Props = {
 
 type State = {
   type: IType;
-};
-
-// Notion 페이지 컴포넌트를 SideBar 컴포넌트 외부로 이동
-const NotionPageView = () => {
-  const [pageContent, setPageContent] = useState(null);
-
-  useEffect(() => {
-    // Notion 페이지 데이터를 가져오는 API 호출
-    const fetchNotionPageData = async () => {
-      const response = await fetch('/api/notion-page');
-      const data = await response.json();
-      setPageContent(data);
-    };
-
-    fetchNotionPageData();
-  }, []);
-
-  return (
-    <div>
-      {/* Notion 페이지 제목 및 텍스트 렌더링 */}
-      {pageContent && (
-        <SidebarList noTextColor noBackground id="NotionContent">
-          <SidebarListItem>
-            <h3>{pageContent.title}</h3> {/* Notion 페이지 제목 */}
-            <p>{pageContent.text}</p> {/* Notion 페이지의 일부 텍스트 */}
-          </SidebarListItem>
-        </SidebarList>
-      )}
-    </div>
-  );
 };
 
 class SideBar extends React.Component<Props, State> {

@@ -4,7 +4,7 @@ import {
   FormGroup
 } from '@erxes/ui/src/components/form';
 import { FlexContent, FlexItem } from '@erxes/ui/src/layout/styles';
-
+import { __, generateTree } from 'coreui/utils';
 import { Alert } from '@erxes/ui/src/utils';
 import Attribution from './Attribution';
 import { BoardHeader } from '@erxes/ui-cards/src/settings/boards/styles';
@@ -107,7 +107,7 @@ function PlaceHolderInput(props: Props) {
         <BoardHeader>
           <FormGroup>
             <div className="header-row">
-              <ControlLabel>Number configuration</ControlLabel>
+              <ControlLabel>{__('Number configuration')}</ControlLabel>
               <div>{renderAttribution()}</div>
             </div>
             <FormControl
@@ -115,14 +115,14 @@ function PlaceHolderInput(props: Props) {
               onKeyPress={onKeyPress}
               onKeyDown={onKeyPress}
               onChange={(e: any) => onChangeConfig(e.target.value)}
-              placeholder="Choose an attribute or any number you prefer"
+              placeholder={__('Choose an attribute or any number you prefer')}
             />
           </FormGroup>
         </BoardHeader>
       </FlexItem>
       <FlexItem count={1} hasSpace={true}>
         <FormGroup>
-          <ControlLabel>Fractional part</ControlLabel>
+          <ControlLabel>{__('Fractional part')}</ControlLabel>
           <FormControl
             type="number"
             onChange={(e: any) => onChangeNumber(e.target.value)}

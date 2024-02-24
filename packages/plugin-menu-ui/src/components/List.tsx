@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
 import Button from '@erxes/ui/src/components/Button';
 import { IMenu, IType } from '../types';
 import Row from './Row';
 import { IButtonMutateProps } from '@erxes/ui/src/types';
 import { __ } from '@erxes/ui/src/utils';
+import React from 'react';
 import Form from './Form';
 import { Title } from '@erxes/ui-settings/src/styles';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
@@ -22,44 +22,6 @@ type Props = {
   loading: boolean;
 };
 
-const NotionPageView = () => {
-  const [pageTitle, setPageTitle] = useState('');
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchNotionPageData = async () => {
-      try {
-        // 여기서는 Notion API 대신 서버의 프록시 엔드포인트를 호출해야 합니다.
-        const response = await fetch('/api/notion-page');
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const data = await response.json();
-
-        // 예시로, 페이지의 제목만을 추출합니다.
-        const title = data.properties.title.title[0].plain_text;
-        setPageTitle(title);
-        setLoading(false);
-      } catch (error) {
-        console.error('Error fetching Notion page data:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchNotionPageData();
-  }, []);
-
-  if (loading) return <div>Loading...</div>;
-  if (!pageTitle) return <div>Error loading page</div>;
-
-  return (
-    <div>
-      <h3>{pageTitle}</h3>
-      {/* 페이지 내용 대신 제목만 표시합니다. 실제 내용을 표시하려면 추가 처리가 필요합니다. */}
-    </div>
-  );
-};
-
 function List({
   menus,
   typeId,
@@ -75,7 +37,7 @@ function List({
     </Button>
   );
 
-  const modalContent = (props: any) => (
+  const modalContent = props => (
     <Form {...props} types={types} renderButton={renderButton} menus={menus} />
   );
 
@@ -94,6 +56,34 @@ function List({
     <Wrapper.ActionBar left={title} right={actionBarRight} wideSpacing />
   );
 
+  const content = (
+    <Table>
+      <thead>
+        <tr>
+          <th>{__('Todo')}</th>
+          <th>{__('Expiry Date')}</th>
+          <th>{__('Actions')}</th>
+        </tr>
+      </thead>
+      <tbody id={'MenusShowing'}>
+        {menus.map(menu => {
+          return (
+            <Row
+              space={0}
+              key={menu._id}
+              menu={menu}
+              remove={remove}
+              edit={edit}
+              renderButton={renderButton}
+              menus={menus}
+              types={types}
+            />
+          );
+        })}
+      </tbody>
+    </Table>
+  );
+
   const SideBarList = asyncComponent(() =>
     import(/* webpackChunkName: "List - Menus" */ '../containers/SideBarList')
   );
@@ -109,9 +99,9 @@ function List({
       actionBar={actionBar}
       content={
         <DataWithLoader
-          data={<NotionPageView />}
+          data={content}
           loading={loading}
-          count={1}
+          count={menus.length}
           emptyText={__('Theres no menu')}
           emptyImage="/images/actions/8.svg"
         />
