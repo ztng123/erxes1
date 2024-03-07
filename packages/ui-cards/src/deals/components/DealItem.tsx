@@ -13,7 +13,7 @@ import ItemFooter from '../../boards/components/portable/ItemFooter';
 import ItemProductProbabilities from './ItemProductProbabilities';
 import Labels from '../../boards/components/label/Labels';
 import React from 'react';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { colors } from '@erxes/ui/src/styles';
 import { renderPriority } from '../../boards/utils';
 

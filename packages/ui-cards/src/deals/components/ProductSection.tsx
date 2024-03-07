@@ -11,7 +11,7 @@ import { Quantity } from '../../boards/styles/stage';
 import React from 'react';
 import { SectionBodyItem } from '@erxes/ui/src/layout/styles';
 import Tip from '@erxes/ui/src/components/Tip';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 
 type Props = {
   productsData: IProductData[];

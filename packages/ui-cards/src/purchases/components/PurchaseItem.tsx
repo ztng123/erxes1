@@ -12,7 +12,7 @@ import { ItemContainer } from '../../boards/styles/common';
 import ItemFooter from '../../boards/components/portable/ItemFooter';
 import Labels from '../../boards/components/label/Labels';
 import React from 'react';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { colors } from '@erxes/ui/src/styles';
 import ItemArchivedStatus from '../../boards/components/portable/ItemArchivedStatus';
 

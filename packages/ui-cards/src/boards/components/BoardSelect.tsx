@@ -5,6 +5,7 @@ import ControlLabel from '@erxes/ui/src/components/form/Label';
 import { IBoard, IPipeline, IStage } from '../types';
 import { selectOptions } from '../utils';
 import { FormContainer } from '../styles/common';
+import { __ } from 'coreui/utils';
 
 type Props = {
   boards: IBoard[];
@@ -68,7 +69,7 @@ class BoardSelect extends React.Component<Props> {
     return (
       <>
         <FormGroup>
-          <ControlLabel>Board</ControlLabel>
+          <ControlLabel>{__('Board')}</ControlLabel>
           {this.renderSelect(
             __('Choose a board'),
             boardId,
@@ -78,7 +79,7 @@ class BoardSelect extends React.Component<Props> {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Pipeline</ControlLabel>
+          <ControlLabel>{__('Pipeline')}</ControlLabel>
           {this.renderSelect(
             __('Choose a pipeline'),
             pipelineId,
@@ -88,7 +89,7 @@ class BoardSelect extends React.Component<Props> {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Stage</ControlLabel>
+          <ControlLabel>{__('Stage')}</ControlLabel>
           {this.renderSelect(
             __('Choose a stage'),
             stageId,

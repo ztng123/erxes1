@@ -1,6 +1,7 @@
 import { ColorButton } from '../../styles/common';
 import Icon from '@erxes/ui/src/components/Icon';
-import { __, Alert } from '@erxes/ui/src/utils';
+import { Alert } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import * as React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import { ChooseLabelWrapper } from '../../styles/label';
@@ -46,7 +47,7 @@ class ChooseLabel extends React.Component<
     this.setState({ selectedLabelIds });
 
     this.props.doLabel(selectedLabelIds);
-    Alert.success('You successfully updated a label');
+    Alert.success(__('You successfully updated a label'));
   };
 
   renderOverlay() {

@@ -12,6 +12,15 @@
     { "name": "cards", "ui": "local" },
     { "name": "products", "ui": "local" },
     { "name": "segments", "ui": "local" },
-    { "name": "menu", "ui": "local" }
+    { "name": "menu", "ui": "local" },
+    { "name": "inbox", "ui": "local" },
+    { "name": "contacts", "ui": "local" },
+    { "name": "tags", "ui": "local" },
+    { "name": "automations", "ui": "local" },
+    { "name": "clientportal", "ui": "local" },
+    { "name": "forms", "ui": "local" },
+    { "name": "engages", "ui": "local" },
+    { "name": "emailtemplates", "ui": "local" },
+    { "name": "notifications", "ui": "local" }
   ]
 }

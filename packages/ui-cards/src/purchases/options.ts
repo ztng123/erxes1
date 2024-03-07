@@ -2,6 +2,7 @@ import { toArray } from '../boards/utils';
 import PurchaseEditForm from './components/PurchaseEditForm';
 import PurchaseItem from './components/PurchaseItem';
 import { mutations, queries } from './graphql';
+import { __ } from 'coreui/utils';
 
 const options = {
   EditForm: PurchaseEditForm,
@@ -46,11 +47,11 @@ const options = {
   },
 
   texts: {
-    addText: 'Add a purchase',
-    updateSuccessText: 'You successfully updated a purchase',
-    deleteSuccessText: 'You successfully deleted a purchase',
-    changeSuccessText: 'You successfully changed a purchase',
-    copySuccessText: 'You successfully copied a purchase'
+    addText: __('Add a purchase'),
+    updateSuccessText: __('You successfully updated a purchase'),
+    deleteSuccessText: __('You successfully deleted a purchase'),
+    changeSuccessText: __('You successfully changed a purchase'),
+    copySuccessText: __('You successfully copied a purchase')
   },
   isMove: true,
   getExtraParams: (queryParams: any) => {

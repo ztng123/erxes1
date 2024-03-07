@@ -7,7 +7,7 @@ import {
   PageHeader
 } from '../styles/header';
 import { IBoard, IOptions, IPipeline } from '../types';
-import { __, isEnabled } from '@erxes/ui/src/utils/core';
+import { isEnabled } from '@erxes/ui/src/utils/core';
 import {
   chartTypes,
   groupByGantt,
@@ -15,7 +15,7 @@ import {
   showByTime,
   stackByChart
 } from '../constants';
-
+import { __ } from 'coreui/utils';
 import Button from '@erxes/ui/src/components/Button';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownToggle from '@erxes/ui/src/components/DropdownToggle';

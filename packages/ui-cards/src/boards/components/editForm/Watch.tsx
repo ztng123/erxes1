@@ -1,7 +1,7 @@
 import { ColorButton } from '../../styles/common';
 import { IItem } from '../../types';
 import Icon from '@erxes/ui/src/components/Icon';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import * as React from 'react';
 import { RightButton, WatchIndicator } from '../../styles/item';
 

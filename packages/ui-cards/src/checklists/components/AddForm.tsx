@@ -5,6 +5,7 @@ import Form from '@erxes/ui/src/components/form/Form';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
 import * as React from 'react';
+import { __ } from 'coreui/utils';
 
 type IProps = {
   itemId: string;
@@ -63,13 +64,13 @@ class AddForm extends React.Component<IProps, State> {
     return (
       <>
         <div>
-          <ControlLabel required={true}>Name</ControlLabel>
+          <ControlLabel required={true}>{__('Name')}</ControlLabel>
           <FormControl
             {...formProps}
             autoFocus={true}
             onChange={this.onChangeTitle}
             value={this.state.title}
-            placeholder="Checklist"
+            placeholder={__('Checklist')}
             onFocus={this.handleFocus}
             name="title"
             required={true}
@@ -82,7 +83,7 @@ class AddForm extends React.Component<IProps, State> {
             onClick={this.close}
             size="small"
           >
-            Close
+            {__('Close')}
           </Button>
 
           {renderButton({

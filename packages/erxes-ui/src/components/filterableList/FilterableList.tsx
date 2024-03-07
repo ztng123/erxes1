@@ -18,6 +18,7 @@ import { Link } from 'react-router-dom';
 import React from 'react';
 import { SidebarList } from '../../layout/styles';
 import Spinner from '../Spinner';
+import { __ } from 'coreui/utils';
 
 type Props = {
   items?: any[];
@@ -223,12 +224,7 @@ class FilterableList extends React.Component<Props, State> {
     }
 
     if (items.length === 0) {
-      return (
-        <EmptyState
-          text="There aren’t any data at the moment."
-          icon="clipboard-blank"
-        />
-      );
+      return <EmptyState text={__('nodatamoment')} icon="clipboard-blank" />;
     }
 
     if (!treeView) {

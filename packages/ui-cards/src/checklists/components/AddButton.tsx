@@ -1,6 +1,6 @@
 import { ColorButton } from '../../boards/styles/common';
 import Icon from '@erxes/ui/src/components/Icon';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import * as React from 'react';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
@@ -22,7 +22,7 @@ class ChecklistAdd extends React.Component<Props> {
   renderForm() {
     return (
       <Popover id="checklist-popover">
-        <Popover.Title as="h3">Add checklist</Popover.Title>
+        <Popover.Title as="h3">{__('Add checklist')}</Popover.Title>
         <Popover.Content>
           <Wrapper>
             <AddForm {...this.props} afterSave={this.hidePopover} />

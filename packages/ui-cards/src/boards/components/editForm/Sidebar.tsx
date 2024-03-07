@@ -6,7 +6,7 @@ import { RightContent } from '../../styles/item';
 import { IItem, IOptions } from '../../types';
 import SidebarConformity from './SidebarConformity';
 import { isEnabled } from '@erxes/ui/src/utils/core';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import SelectBranches from '@erxes/ui/src/team/containers/SelectBranches';
 import SelectDepartments from '@erxes/ui/src/team/containers/SelectDepartments';
 import { IUser } from '@erxes/ui/src/auth/types';
@@ -50,9 +50,9 @@ class Sidebar extends React.Component<Props> {
     return (
       <RightContent>
         <FormGroup>
-          <ControlLabel>Assigned to</ControlLabel>
+          <ControlLabel>{__('Assigned to')}</ControlLabel>
           <SelectTeamMembers
-            label="Choose users"
+            label={__('Choose users')}
             name="assignedUserIds"
             initialValue={assignedUserIds}
             onSelect={userOnChange}
@@ -66,7 +66,7 @@ class Sidebar extends React.Component<Props> {
           <ControlLabel>{__('Branches')}</ControlLabel>
           <SelectBranches
             name="branchIds"
-            label="Choose branches"
+            label={__('Choose branches')}
             initialValue={item?.branchIds}
             onSelect={onChangeStructure}
           />
@@ -75,7 +75,7 @@ class Sidebar extends React.Component<Props> {
           <ControlLabel>{__('Departments')}</ControlLabel>
           <SelectDepartments
             name="departmentIds"
-            label="Choose departments"
+            label={__('Choose departments')}
             onSelect={onChangeStructure}
             initialValue={item?.departmentIds}
           />

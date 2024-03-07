@@ -11,6 +11,7 @@ import SelectBranches from '@erxes/ui/src/team/containers/SelectBranches';
 import SelectDepartments from '@erxes/ui/src/team/containers/SelectDepartments';
 import FormGroup from '@erxes/ui/src/components/form/Group';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
+import { __ } from 'coreui/utils';
 
 type Props = {
   object: any;
@@ -102,9 +103,9 @@ function GenerateAddFormFields(props: Props) {
           if (field.field === 'branchIds') {
             return (
               <FormGroup>
-                <ControlLabel>Branches</ControlLabel>
+                <ControlLabel>{__('Branches')}</ControlLabel>
                 <SelectBranches
-                  label="Choose branch"
+                  label={__('Choose branch')}
                   name="branches"
                   initialValue={[]}
                   multi={true}
@@ -119,7 +120,7 @@ function GenerateAddFormFields(props: Props) {
           if (field.field === 'departmentIds') {
             return (
               <FormGroup>
-                <ControlLabel>Departments</ControlLabel>
+                <ControlLabel>{__('Departments')}</ControlLabel>
                 <SelectDepartments
                   label="Choose department"
                   name="departments"

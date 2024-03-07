@@ -1,7 +1,8 @@
 import { ArchiveStatus } from '../../styles/item';
 import Icon from '@erxes/ui/src/components/Icon';
 import { CloseModal } from '@erxes/ui/src/styles/main';
-import { __, router as routerUtils } from '@erxes/ui/src/utils';
+import { router as routerUtils } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { withRouter } from 'react-router-dom';
 import React from 'react';
 import Modal from 'react-bootstrap/Modal';

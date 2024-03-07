@@ -2,7 +2,7 @@ import { Amount, HeaderAmount } from './styles/stage';
 import { ColumnProps, getCommonParams } from './components/Calendar';
 import { IDraggableLocation, IFilterParams, IItem, IItemMap } from './types';
 import { STORAGE_BOARD_KEY, STORAGE_PIPELINE_KEY } from './constants';
-
+import { __ } from 'coreui/utils';
 import { IDateColumn } from '@erxes/ui/src/types';
 import PriorityIndicator from './components/editForm/PriorityIndicator';
 import React from 'react';
@@ -190,8 +190,8 @@ export const renderPriority = (priority?: string) => {
   if (!priority) {
     return null;
   }
-
-  return <PriorityIndicator value={priority} />;
+  const translatedPriority = __(priority);
+  return <PriorityIndicator value={translatedPriority} />;
 };
 
 export const generateButtonClass = (closeDate: Date, isComplete?: boolean) => {

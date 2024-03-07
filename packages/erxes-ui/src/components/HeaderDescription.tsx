@@ -4,7 +4,7 @@ import Button from './Button';
 import Icon from './Icon';
 import React from 'react';
 import Tip from './Tip';
-import { __ } from '../utils/core';
+import { __ } from 'coreui/utils';
 import { dimensions } from '../styles';
 import styledTS from 'styled-components-ts';
 

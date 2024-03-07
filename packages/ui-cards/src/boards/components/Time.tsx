@@ -12,7 +12,7 @@ import Timeline, {
 // make sure you include the timeline stylesheet or the timeline will not be styled
 import 'react-calendar-timeline/lib/Timeline.css';
 import moment from 'moment';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { Modal } from 'react-bootstrap';
 import RTG from 'react-transition-group';
 import AddForm from '../containers/portable/AddForm';

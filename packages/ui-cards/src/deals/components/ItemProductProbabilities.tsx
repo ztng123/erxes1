@@ -3,7 +3,7 @@ import { renderAmount, renderPercentedAmount } from '../../boards/utils';
 import { IDeal } from '../types';
 import React from 'react';
 import { StageInfo } from '../../boards/styles/stage';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 
 type Props = {
   totalAmount?: any;

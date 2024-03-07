@@ -2,6 +2,7 @@ import { toArray } from '../boards/utils';
 import DealEditForm from './components/DealEditForm';
 import DealItem from './components/DealItem';
 import { mutations, queries } from './graphql';
+import { __ } from 'coreui/utils';
 
 const options = {
   EditForm: DealEditForm,
@@ -43,11 +44,11 @@ const options = {
     updateTimeTrackMutation: ``
   },
   texts: {
-    addText: 'Add a deal',
-    updateSuccessText: 'You successfully updated a deal',
-    deleteSuccessText: 'You successfully deleted a deal',
-    changeSuccessText: 'You successfully changed a deal',
-    copySuccessText: 'You successfully copied a deal'
+    addText: __('Add a deal'),
+    updateSuccessText: __('You successfully updated a deal'),
+    deleteSuccessText: __('You successfully deleted a deal'),
+    changeSuccessText: __('You successfully changed a deal'),
+    copySuccessText: __('You successfully copied a deal')
   },
   isMove: true,
   getExtraParams: (queryParams: any) => {

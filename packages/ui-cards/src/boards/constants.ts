@@ -1,4 +1,4 @@
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 export const STORAGE_BOARD_KEY = 'erxesCurrentBoardId';
 export const STORAGE_PIPELINE_KEY = 'erxesCurrentPipelineId';
 

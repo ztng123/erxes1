@@ -1,5 +1,5 @@
 import React from 'react';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { colors } from '@erxes/ui/src/styles';
 import { Status } from '../../styles/item';
 

@@ -7,7 +7,7 @@ import {
 import Calendar from '@erxes/ui/src/components/Calendar';
 import { colors } from '@erxes/ui/src/styles';
 import { IDateColumn } from '@erxes/ui/src/types';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import Header from '@erxes/ui/src/layout/components/Header';
 import React from 'react';
 import styled from 'styled-components';

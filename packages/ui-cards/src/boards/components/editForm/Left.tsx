@@ -10,8 +10,8 @@ import {
 } from '@erxes/ui-internalnotes/src/components/Form';
 import { IItem, IItemParams, IOptions } from '../../types';
 import React, { useEffect, useState } from 'react';
-import { __, extractAttachment } from '@erxes/ui/src/utils';
-
+import { extractAttachment } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import Actions from './Actions';
 import ActivityInputs from '@erxes/ui-log/src/activityLogs/components/ActivityInputs';
 import ActivityLogs from '@erxes/ui-log/src/activityLogs/containers/ActivityLogs';

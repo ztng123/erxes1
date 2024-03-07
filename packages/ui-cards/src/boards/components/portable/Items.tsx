@@ -4,7 +4,7 @@ import EmptyState from '@erxes/ui/src/components/EmptyState';
 import Icon from '@erxes/ui/src/components/Icon';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
 import { ButtonRelated } from '@erxes/ui/src/styles/main';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import React from 'react';
 import { ItemChooser } from '../../containers/portable/';
 import { IItem, IOptions } from '../../types';
@@ -136,7 +136,7 @@ class Items extends React.Component<Props, { openItemId?: string }> {
 
     const relQuickButtons = (
       <ModalTrigger
-        title="Related Associate"
+        title={__('Related Associate')}
         trigger={relTrigger}
         size="lg"
         content={relContent}

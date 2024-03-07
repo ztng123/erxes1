@@ -4,9 +4,10 @@ import debounce from 'lodash/debounce';
 import React, { useCallback, useEffect, useState } from 'react';
 import Select from 'react-select-plus';
 import styled from 'styled-components';
-import { __, Alert } from '../utils';
+import { Alert } from '../utils';
 import Button from './Button';
 import Icon from './Icon';
+import { __ } from 'coreui/utils';
 
 const Wrapper = styled.div`
   display: flex;

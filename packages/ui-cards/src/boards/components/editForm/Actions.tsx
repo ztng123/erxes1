@@ -16,10 +16,11 @@ import TaggerPopover from '@erxes/ui-tags/src/components/TaggerPopover';
 import Tags from '@erxes/ui/src/components/Tags';
 import Watch from '../../containers/editForm/Watch';
 import Comment from '../../../comment/containers/Comment';
-import { loadDynamicComponent, __ } from '@erxes/ui/src/utils';
+import { loadDynamicComponent } from '@erxes/ui/src/utils';
 import { isEnabled } from '@erxes/ui/src/utils/core';
 import PrintActionButton from './PrintDocumentBtn';
 import { Button } from 'react-bootstrap';
+import { __ } from 'coreui/utils';
 
 type Props = {
   item: IItem;
@@ -68,7 +69,7 @@ class Actions extends React.Component<Props> {
         ) : (
           <Icon icon="sort-amount-up" />
         )}
-        {item.priority ? item.priority : __('Priority')}
+        {item.priority ? __(item.priority) : __('Priority')}
       </ColorButton>
     );
 

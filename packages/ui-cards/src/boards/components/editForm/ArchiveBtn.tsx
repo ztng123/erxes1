@@ -2,7 +2,7 @@ import { ColorButton } from '../../styles/common';
 import { IItem } from '../../types';
 import Icon from '@erxes/ui/src/components/Icon';
 import colors from '@erxes/ui/src/styles/colors';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import React from 'react';
 
 interface IProps {

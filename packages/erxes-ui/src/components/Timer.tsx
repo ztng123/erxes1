@@ -5,7 +5,7 @@ import Alert from '../utils/Alert';
 import Box from './Box';
 import Button from './Button';
 import Tip from './Tip';
-
+import { __ } from 'coreui/utils';
 const Container = styledTS<{ isComplete: boolean }>(styled.div)`
   padding: 15px 20px 20px 20px;
   color: #243B53;
@@ -172,7 +172,7 @@ class TaskTimer extends React.Component<Props, State> {
   };
 
   handleReset = () => {
-    Alert.info('Task reset!');
+    Alert.info(__('Task reset!'));
 
     this.stopTimer();
 
@@ -199,7 +199,7 @@ class TaskTimer extends React.Component<Props, State> {
     const isComplete = status === STATUS_TYPES.COMPLETED;
 
     const handleComplete = () => {
-      Alert.info('Task completed!');
+      Alert.info(__('Task completed!'));
 
       this.stopTimer();
 
@@ -209,7 +209,7 @@ class TaskTimer extends React.Component<Props, State> {
     };
 
     return (
-      <Tip text={isComplete ? 'Completed' : 'Complete'} placement="top">
+      <Tip text={isComplete ? __('Completed') : __('Complete')} placement="top">
         <Button
           disabled={isComplete}
           btnStyle={isComplete ? 'success' : 'default'}
@@ -248,7 +248,7 @@ class TaskTimer extends React.Component<Props, State> {
           STATUS_TYPES.PAUSED,
           STATUS_TYPES.STOPPED
         ].includes(status) ? (
-          <Tip text="Start" placement="top">
+          <Tip text={__('Start')} placement="top">
             <Button
               disabled={isComplete}
               icon="play-1"
@@ -257,12 +257,12 @@ class TaskTimer extends React.Component<Props, State> {
             />
           </Tip>
         ) : (
-          <Tip text="Pause" placement="top">
+          <Tip text={__('Pause')} placement="top">
             <Button btnStyle="danger" icon="pause-1" onClick={handleClick} />
           </Tip>
         )}
 
-        <Tip text="Reset" placement="top">
+        <Tip text={__('Reset')} placement="top">
           <Button btnStyle="warning" icon="redo" onClick={this.handleReset} />
         </Tip>
         {this.renderButton()}
@@ -276,7 +276,7 @@ class TaskTimer extends React.Component<Props, State> {
     return (
       <TimeWrapper>
         <label>
-          Time spent on this task <span>({status})</span>
+          {__('Time spent on this task')} <span>({__(status)})</span>
         </label>
         {getSpentTime(timeSpent)}
       </TimeWrapper>
@@ -288,7 +288,7 @@ class TaskTimer extends React.Component<Props, State> {
     const isComplete = status === STATUS_TYPES.COMPLETED;
 
     return (
-      <Box title="Time tracking" isOpen={true} name="showCustomers">
+      <Box title={__('Time tracking')} isOpen={true} name="showCustomers">
         <Container isComplete={isComplete}>
           {this.renderTime()}
           {this.renderActions()}

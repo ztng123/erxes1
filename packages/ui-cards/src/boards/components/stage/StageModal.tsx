@@ -1,8 +1,9 @@
 import client from '@erxes/ui/src/apolloClient';
 import { gql } from '@apollo/client';
 import React from 'react';
+import { __ } from 'coreui/utils';
 import { queries } from '../../graphql';
-import { getEnv, __ } from '@erxes/ui/src/utils';
+import { getEnv } from '@erxes/ui/src/utils';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Modal from 'react-bootstrap/Modal';
 import { Button, Alert } from '@erxes/ui/src';

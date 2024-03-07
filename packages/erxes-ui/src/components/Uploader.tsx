@@ -5,7 +5,7 @@ import colors from '../styles/colors';
 import { rgba } from '../styles/ecolor';
 import { IAttachment } from '../types';
 import Alert from '../utils/Alert';
-import { __ } from '../utils/core';
+import { __ } from 'coreui/utils';
 import uploadHandler from '../utils/uploadHandler';
 import Spinner from './Spinner';
 import AttachmentsGallery from './AttachmentGallery';

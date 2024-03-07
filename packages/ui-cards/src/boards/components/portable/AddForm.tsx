@@ -5,7 +5,7 @@ import { IAttachment, IField } from '@erxes/ui/src/types';
 import { Alert } from '@erxes/ui/src/utils';
 import React from 'react';
 import Select from 'react-select-plus';
-
+import { __ } from 'coreui/utils';
 import BoardSelect from '../../containers/BoardSelect';
 import {
   BoardSelectWrapper,
@@ -343,11 +343,11 @@ class AddForm extends React.Component<Props, State> {
         {this.renderSelect()}
         <HeaderRow>
           <HeaderContent>
-            <ControlLabel required={true}>Name</ControlLabel>
+            <ControlLabel required={true}>{__('Name')}</ControlLabel>
 
             {this.props.showSelect ? (
               <CardSelect
-                placeholder={`Add a new ${type} or select one`}
+                placeholder={__(`Add a new ${type} or select one`)}
                 options={this.state.cards}
                 onChange={this.onChangeCardSelect}
                 type={type}
@@ -357,7 +357,7 @@ class AddForm extends React.Component<Props, State> {
               <FormControl
                 value={this.state.name}
                 autoFocus={true}
-                placeholder="Create a new card"
+                placeholder={__('Create a new card')}
                 onChange={this.onChangeName}
               />
             )}
@@ -367,9 +367,9 @@ class AddForm extends React.Component<Props, State> {
         {showStageSelect && (
           <HeaderRow>
             <HeaderContent>
-              <ControlLabel required={true}>Stage</ControlLabel>
+              <ControlLabel required={true}>{__('Stage')}</ControlLabel>
               <Select
-                placeholder="Select a stage"
+                placeholder={__('Select a stage')}
                 value={this.state.stageId}
                 options={stageValues}
                 name="stage"
@@ -399,7 +399,7 @@ class AddForm extends React.Component<Props, State> {
             onClick={this.props.closeModal}
             icon="times-circle"
           >
-            Close
+            {__('Close')}
           </Button>
 
           <Button
@@ -408,7 +408,7 @@ class AddForm extends React.Component<Props, State> {
             icon="check-circle"
             type="submit"
           >
-            Save
+            {__('Save')}
           </Button>
         </FormFooter>
       </form>

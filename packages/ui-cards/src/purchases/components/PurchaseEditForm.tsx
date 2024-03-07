@@ -15,7 +15,7 @@ import React from 'react';
 import Sidebar from '../../boards/components/editForm/Sidebar';
 import Top from '../../boards/components/editForm/Top';
 import { pluginsOfItemSidebar } from 'coreui/pluginUtils';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import ChildrenSection from '../../boards/containers/editForm/ChildrenSection';
 import queryString from 'query-string';
 import { IUser } from '@erxes/ui/src/auth/types';

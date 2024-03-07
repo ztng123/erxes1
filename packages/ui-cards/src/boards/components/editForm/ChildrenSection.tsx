@@ -10,7 +10,7 @@ import React from 'react';
 import { AddForm } from '@erxes/ui-cards/src/boards/containers/portable';
 import EditForm from '@erxes/ui-cards/src/boards/containers/editForm/EditForm';
 import { IOptions } from '../../types';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { IDeal } from '../../../deals/types';
 import { ITicket } from '../../../tickets/types';
 import { ITask } from '../../../tasks/types';

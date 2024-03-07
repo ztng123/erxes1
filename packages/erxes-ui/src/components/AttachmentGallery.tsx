@@ -1,4 +1,5 @@
-import { __, confirm } from '../utils';
+import { confirm } from '../utils';
+import { __ } from 'coreui/utils';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { rgba } from '../styles/ecolor';

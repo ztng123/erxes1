@@ -7,7 +7,8 @@ import ProgressBar from '@erxes/ui/src/components/ProgressBar';
 import SortableList from '@erxes/ui/src/components/SortableList';
 import colors from '@erxes/ui/src/styles/colors';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
-import { __, isEmptyContent } from '@erxes/ui/src/utils';
+import { isEmptyContent } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import React, { useEffect, useState } from 'react';
 import Item from '../containers/Item';
 import {

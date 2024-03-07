@@ -1,6 +1,6 @@
 import EmptyState from '@erxes/ui/src/components/EmptyState';
 import Icon from '@erxes/ui/src/components/Icon';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import React, { useState } from 'react';
 import { BoardItem, ItemContainer, LoadMore } from '../styles/rightMenu';
 import { IItem, IOptions } from '../types';

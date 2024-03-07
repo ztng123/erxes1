@@ -5,7 +5,7 @@ import colors from '@erxes/ui/src/styles/colors';
 import * as React from 'react';
 import Dropdown from 'react-bootstrap/Dropdown';
 import styled from 'styled-components';
-
+import { __ } from 'coreui/utils';
 export const ActionItem = styled.button`
   width: 100%;
   text-align: left;
@@ -54,7 +54,7 @@ class SelectItem extends React.Component<IProps> {
           {items.map(item => (
             <li key={item}>
               <ActionItem onClick={onChangeItem.bind(this, item)}>
-                <PriorityIndicator value={item} /> {item}
+                <PriorityIndicator value={item} /> {__(item)}
                 {this.isChecked(item) && <Icon icon="check-1" />}
               </ActionItem>
             </li>

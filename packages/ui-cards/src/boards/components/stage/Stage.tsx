@@ -23,8 +23,9 @@ import ItemList from '../stage/ItemList';
 import ItemProductProbabilities from '../../../deals/components/ItemProductProbabilities';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
 import React from 'react';
-import { __, isEnabled } from '@erxes/ui/src/utils/core';
+import { isEnabled } from '@erxes/ui/src/utils/core';
 import StageModal from './StageModal';
+import { __ } from 'coreui/utils';
 
 type Props = {
   loadingItems: () => boolean;

@@ -16,6 +16,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Popover from 'react-bootstrap/Popover';
 import Select from 'react-select-plus';
 import { generateButtonClass, selectOptions } from '../../utils';
+import { __ } from 'coreui/utils';
 
 type Props = {
   closeDate: Date;

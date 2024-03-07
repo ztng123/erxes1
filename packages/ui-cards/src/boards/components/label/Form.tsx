@@ -11,6 +11,7 @@ import { IPipelineLabel } from '../../types';
 import TwitterPicker from 'react-color/lib/Twitter';
 import { ColorChooserWrapper } from '../../styles/label';
 import { COLORS } from '@erxes/ui/src/constants/colors';
+import { __ } from 'coreui/utils';
 
 type IProps = {
   renderButton: (props: IButtonMutateProps) => JSX.Element;
@@ -105,7 +106,7 @@ class FormComponent extends React.Component<IProps, State> {
     return (
       <>
         <FormGroup>
-          <ControlLabel required={true}>Name</ControlLabel>
+          <ControlLabel required={true}>{__('Name')}</ControlLabel>
           <FormControl
             {...formProps}
             name="name"
@@ -117,7 +118,7 @@ class FormComponent extends React.Component<IProps, State> {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel required={true}>Select a color</ControlLabel>
+          <ControlLabel required={true}>{__('Select a color')}</ControlLabel>
           <ColorChooserWrapper>
             <TwitterPicker
               colors={COLORS}
@@ -135,7 +136,7 @@ class FormComponent extends React.Component<IProps, State> {
             icon="cancel-1"
             onClick={this.onRemove}
           >
-            Delete
+            {__('Delete')}
           </Button>
         )}
 
