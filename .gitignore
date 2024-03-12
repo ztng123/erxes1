@@ -46,3 +46,4 @@ docker/rabbitmq-data/**packages/plugin-documents-ui/src/index.js
 packages/plugin-documents-ui/src/index.js
 
 elasticsearch-7.5.1
+elasticsearch-7.5.1-darwin-x86_64.tar.gz
