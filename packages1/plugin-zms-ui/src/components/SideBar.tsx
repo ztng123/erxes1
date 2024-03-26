@@ -1,17 +1,17 @@
-import { __ } from '@erxes/ui/src/utils/core';
-import LeftSidebar from '@erxes/ui/src/layout/components/Sidebar';
-import { SidebarList } from '@erxes/ui/src/layout/styles';
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { IParent } from '../types';
-import { IButtonMutateProps } from '@erxes/ui/src/types';
-import TypeForm from './TypeForm';
-import Button from '@erxes/ui/src/components/Button';
-import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
-import { Header, SidebarListItem } from '@erxes/ui-settings/src/styles';
-import ActionButtons from '@erxes/ui/src/components/ActionButtons';
-import Tip from '@erxes/ui/src/components/Tip';
-import Icon from '@erxes/ui/src/components/Icon';
+import { __ } from "coreui/utils";
+import LeftSidebar from "@erxes/ui/src/layout/components/Sidebar";
+import { SidebarList } from "@erxes/ui/src/layout/styles";
+import React from "react";
+import { Link } from "react-router-dom";
+import { IParent } from "../types";
+import { IButtonMutateProps } from "@erxes/ui/src/types";
+import TypeForm from "./TypeForm";
+import Button from "@erxes/ui/src/components/Button";
+import ModalTrigger from "@erxes/ui/src/components/ModalTrigger";
+import { Header, SidebarListItem } from "@erxes/ui-settings/src/styles";
+import ActionButtons from "@erxes/ui/src/components/ActionButtons";
+import Tip from "@erxes/ui/src/components/Tip";
+import Icon from "@erxes/ui/src/components/Icon";
 
 type Props = {
   renderButton: (props: IButtonMutateProps) => JSX.Element;
@@ -34,7 +34,7 @@ class SideBar extends React.Component<Props, State> {
 
   trigger = (
     <Button
-      id={'AddParentButton'}
+      id={"AddParentButton"}
       btnStyle="success"
       icon="plus-circle"
       block={true}
@@ -45,7 +45,7 @@ class SideBar extends React.Component<Props, State> {
 
   editTrigger = (
     <Button btnStyle="link">
-      <Tip text={__('Edit')}>
+      <Tip text={__("Edit")}>
         <Icon icon="edit-3"></Icon>
       </Tip>
     </Button>
@@ -53,13 +53,13 @@ class SideBar extends React.Component<Props, State> {
 
   ListItem = (type, currentTypeName) => {
     const { remove } = this.props;
-    const className = type && currentTypeName === type._id ? 'active' : '';
-    const content = props => {
+    const className = type && currentTypeName === type._id ? "active" : "";
+    const content = (props) => {
       const { renderButton } = this.props;
       return <TypeForm {...props} type={type} renderButton={renderButton} />;
     };
     return (
-      <SidebarListItem isActive={className === 'active'} key={type._id}>
+      <SidebarListItem isActive={className === "active"} key={type._id}>
         <Link to={`/zmss?parentId=${type._id}`}>{__(type.name)}</Link>
         {className && (
           <ActionButtons>
@@ -71,7 +71,7 @@ class SideBar extends React.Component<Props, State> {
               enforceFocus={false}
             />
 
-            <Tip text={__('Delete')} placement="top">
+            <Tip text={__("Delete")} placement="top">
               <Button
                 btnStyle="link"
                 onClick={remove.bind(null, type)}
@@ -84,7 +84,7 @@ class SideBar extends React.Component<Props, State> {
     );
   };
 
-  modalContent = props => {
+  modalContent = (props) => {
     const { renderButton } = this.props;
     return <TypeForm {...props} renderButton={renderButton} />;
   };
@@ -98,7 +98,7 @@ class SideBar extends React.Component<Props, State> {
           <Header>
             <ModalTrigger
               size="sm"
-              title={__('Add Parents')}
+              title={__("Add Parents")}
               trigger={this.trigger}
               content={this.modalContent}
             />
@@ -107,11 +107,11 @@ class SideBar extends React.Component<Props, State> {
         hasBorder
       >
         <LeftSidebar.Header uppercase={true}>
-          {__('Parents')}
+          {__("Parents")}
         </LeftSidebar.Header>
 
         <SidebarList noTextColor noBackground id="SideBar">
-          {parents.map(type => {
+          {parents.map((type) => {
             return this.ListItem(type, currentTypeId);
           })}
         </SidebarList>

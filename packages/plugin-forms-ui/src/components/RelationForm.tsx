@@ -3,7 +3,7 @@ import FormGroup from '@erxes/ui/src/components/form/Group';
 import { IField } from '@erxes/ui/src/types';
 import Info from '@erxes/ui/src/components/Info';
 import React from 'react';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { loadDynamicComponent } from '@erxes/ui/src/utils/core';
 
 type Props = {

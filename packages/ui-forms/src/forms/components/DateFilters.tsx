@@ -4,8 +4,8 @@ import {
   EndDateContainer
 } from '../styles';
 import React, { useEffect, useState } from 'react';
-import { __, router } from '@erxes/ui/src/utils/core';
-
+import { router } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import Box from '@erxes/ui/src/components/Box';
 import Button from '@erxes/ui/src/components/Button';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
@@ -75,7 +75,9 @@ function DateFilters(props: IProps) {
       {fields.map(field => {
         return (
           <React.Fragment key={field._id}>
-            <ControlLabel>{field.label} range:</ControlLabel>
+            <ControlLabel>
+              {__(field.label)} {__('range:')}
+            </ControlLabel>
 
             <CustomRangeContainer id="CustomRangeContainer">
               <DateControl
@@ -89,7 +91,7 @@ function DateFilters(props: IProps) {
                 onChange={date =>
                   onChangeRangeFilter(`${field.name}`, 'gte', date)
                 }
-                placeholder={'Start date'}
+                placeholder={__('Start date')}
                 dateFormat={'YYYY-MM-DD'}
               />
 
@@ -102,7 +104,7 @@ function DateFilters(props: IProps) {
                   }
                   required={false}
                   name="endDate"
-                  placeholder={'End date'}
+                  placeholder={__('End date')}
                   onChange={date =>
                     onChangeRangeFilter(`${field.name}`, 'lte', date)
                   }
@@ -136,7 +138,7 @@ function DateFilters(props: IProps) {
         data={data}
         loading={loading}
         count={fields.length}
-        emptyText={emptyText || 'Empty'}
+        emptyText={emptyText || __('Empty')}
         emptyIcon="leaf"
         size="small"
         objective={true}

@@ -11,10 +11,11 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import { IClientPortalUser } from '../../types';
 import React from 'react';
 import SmsForm from '@erxes/ui-inbox/src/settings/integrations/containers/telnyx/SmsForm';
-import { loadDynamicComponent, __ } from '@erxes/ui/src/utils';
+import { loadDynamicComponent } from '@erxes/ui/src/utils';
 // import ExtendSubscription from '@erxes/ui-forum/src/containers/ExtendSubscriptionForm';
 import EmailWidget from '@erxes/ui-inbox/src/inbox/components/EmailWidget';
 import { isEnabled } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 
 type Props = {
   clientPortalUser: IClientPortalUser;

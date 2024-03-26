@@ -7,7 +7,7 @@ import {
   MoreHorizontalIcon,
   XCircleIcon,
 } from "lucide-react"
-
+import { __ } from "coreui/utils";
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -64,7 +64,7 @@ const CommentItem = ({
           {loading ? <LoadingPost text="Loading" /> : null}
 
           <div className="flex flex-col items-center justify-center">
-            <AlertTriangleIcon size={30} color={"#6569DF"} /> Are you sure?
+            <AlertTriangleIcon size={30} color={"#6569DF"} /> {__("Are you sure?")}
           </div>
 
           <DialogFooter className="flex flex-col items-center justify-center sm:justify-center sm:space-x-2">
@@ -72,7 +72,7 @@ const CommentItem = ({
               className="font-semibold rounded-full bg-[#F2F2F2] hover:bg-[#F2F2F2] text-black"
               onClick={() => setOpen(false)}
             >
-              No, Cancel
+              {__("No, Cancel")}
             </Button>
 
             <Button
@@ -80,7 +80,7 @@ const CommentItem = ({
               className="font-semibold rounded-full"
               onClick={deleteMutation}
             >
-              Yes, I am
+              {__("Yes, I am")}
             </Button>
           </DialogFooter>
         </DialogContent>
@@ -97,7 +97,7 @@ const CommentItem = ({
             <Dialog open={open} onOpenChange={() => setOpen(!open)}>
               <DialogTrigger asChild={true}>
                 <div className="hover:bg-[#F0F0F0] p-2 rounded-md cursor-pointer text-xs flex items-center">
-                  <XCircleIcon size={18} className="mr-1" /> Delete comment
+                  <XCircleIcon size={18} className="mr-1" /> {__("Delete comment")}
                 </div>
               </DialogTrigger>
 

@@ -2307,5 +2307,9 @@
   "Can edit members": "Can edit members",
   "Can move members": "Can move members",
   "by department": "by department",
-  "nodatamoment": "There aren’t any data at the moment."
+  "nodatamoment": "There aren’t any data at the moment.",
+  "triggerAutomation": "How do you want to trigger this automation",
+  "makeSegment": "Make sure you’re on the right page and you want to segment by from the list on the left: Visitor, Lead, Customer, Company",
+  "filterByPortal": "Filter by {kind} portal",
+  "untagConfirmMessage": "This action will untag all ${tag.type}(s) with this tag and remove the tag. Are you sure?"
 }

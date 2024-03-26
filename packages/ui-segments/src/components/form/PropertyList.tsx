@@ -4,11 +4,13 @@ import React from 'react';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import FormGroup from '@erxes/ui/src/components/form/Group';
 import { OperatorList } from '../styles';
+import { __ } from 'coreui/utils';
 
 type Props = {
   contentType: string;
   fields: IField[];
   onClickProperty: (field: IField) => void;
+  searchValue: string;
 };
 
 class PropertyList extends React.Component<Props, {}> {
@@ -45,14 +47,28 @@ class PropertyList extends React.Component<Props, {}> {
   };
 
   renderFields = fields => {
-    return fields.map(field => {
+    const { searchValue } = this.props;
+
+    const searchQuery = searchValue.toLowerCase();
+
+    const filteredFields = fields.filter(field => {
+      const originalLabelLower = field.label.toLowerCase();
+      // 번역된 라벨을 소문자로 변환
+      const translatedLabelLower = __(field.label).toLowerCase();
+      // 검색어가 원본 라벨 또는 번역된 라벨 중 하나라도 포함되는지 확인
+      return (
+        originalLabelLower.includes(searchQuery) ||
+        translatedLabelLower.includes(searchQuery)
+      );
+    });
+    return filteredFields.map(field => {
       return (
         <FormControl
-          key={Math.random()}
+          key={field._id || Math.random()}
           componentClass="radio"
-          onChange={this.onClickProperty.bind(this, field)}
+          onChange={() => this.onClickProperty(field)}
         >
-          {field.label}
+          {__(field.label)}
         </FormControl>
       );
     });

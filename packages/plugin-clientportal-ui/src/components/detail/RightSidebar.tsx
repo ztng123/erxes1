@@ -1,6 +1,6 @@
 import Box from '@erxes/ui/src/components/Box';
 import Sidebar from '@erxes/ui/src/layout/components/Sidebar';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import dayjs from 'dayjs';
 import React from 'react';
 import PortableItems from '@erxes/ui-cards/src/boards/components/portable/Items';

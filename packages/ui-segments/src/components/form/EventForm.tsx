@@ -1,6 +1,6 @@
 import { IConditionFilter, IEvent, ISegmentCondition } from '../../types';
 import Select from 'react-select-plus';
-
+import { __ } from 'coreui/utils';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
 import FormGroup from '@erxes/ui/src/components/form/Group';
@@ -130,7 +130,7 @@ class EventForm extends React.Component<Props, State> {
 
       return (
         <>
-          <ControlLabel>Attributes</ControlLabel>
+          <ControlLabel>{__('Attributes')}</ControlLabel>
           {attributeNames.map((attributeName, index) => {
             return (
               <div key={index}>
@@ -187,11 +187,11 @@ class EventForm extends React.Component<Props, State> {
     return (
       <>
         <SegmentBackIcon onClick={this.props.onClickBackToList}>
-          <Icon icon="angle-left" size={20} /> back
+          <Icon icon="angle-left" size={20} /> {__('back')}
         </SegmentBackIcon>
         <OperatorList>
           <FormGroup>
-            <ControlLabel>Event</ControlLabel>
+            <ControlLabel>{__('Event')}</ControlLabel>
             <Select
               value={eventName}
               options={events.map(b => ({ value: b.name, label: b.name }))}
@@ -200,7 +200,7 @@ class EventForm extends React.Component<Props, State> {
           </FormGroup>
 
           <FormGroup>
-            <ControlLabel>Occurence</ControlLabel>
+            <ControlLabel>{__('Occurence')}</ControlLabel>
             <Select
               value={eventOccurence}
               options={EVENT_OCCURENCES.map(b => ({
@@ -212,7 +212,7 @@ class EventForm extends React.Component<Props, State> {
           </FormGroup>
 
           <FormGroup>
-            <ControlLabel>Value</ControlLabel>
+            <ControlLabel>{__('Value')}</ControlLabel>
             <FormControl
               type="number"
               value={eventOccurenceValue}
@@ -224,7 +224,7 @@ class EventForm extends React.Component<Props, State> {
 
           <CenterContent>
             <Button onClick={this.onClick} btnStyle="default">
-              Apply filter
+              {__('Apply filter')}
             </Button>
           </CenterContent>
         </OperatorList>

@@ -73,9 +73,7 @@ export const EMPTY_SEGMENT_CONTENT = {
     },
     {
       title: __('Choose the Contact Type'),
-      description: __(
-        'Make sure you’re on the right page and  you want to segment by from the list on the left: Visitor, Lead, Customer, Company'
-      )
+      description: __('makeSegment')
     }
   ]
 };

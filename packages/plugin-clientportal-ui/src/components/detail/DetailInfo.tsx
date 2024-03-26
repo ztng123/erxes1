@@ -1,4 +1,4 @@
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import {
   SidebarList,
   SidebarCounter,

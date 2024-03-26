@@ -9,7 +9,7 @@ import {
 import { generateTree, isEnabled } from '@erxes/ui/src/utils/core';
 import { gql, useQuery } from '@apollo/client';
 import { removeParams, setParams } from '@erxes/ui/src/utils/router';
-
+import { __ } from 'coreui/utils';
 import { Link } from 'react-router-dom';
 import React from 'react';
 import { SidebarListItem } from '@erxes/ui-settings/src/styles';
@@ -26,7 +26,7 @@ export function TagsSection({
 }) {
   if (!isEnabled('tags')) {
     return (
-      <Box name="tags" title="Filter by Tags">
+      <Box name="tags" title={__('Filter by Tags')}>
         <EmptyState text="Not Aviable Tags" icon="info-circle" />
       </Box>
     );
@@ -78,7 +78,12 @@ export function TagsSection({
   );
 
   return (
-    <Box name="tags" title="Filter by Tags" extraButtons={extraButtons} isOpen>
+    <Box
+      name="tags"
+      title={__('Filter by Tags')}
+      extraButtons={extraButtons}
+      isOpen
+    >
       <SidebarList>
         {generateTree(
           tags.map(tag => (!tag?.parentId ? { ...tag, parentId: null } : tag)),

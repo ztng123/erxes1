@@ -7,10 +7,10 @@ import {
   SidebarList
 } from '@erxes/ui/src/layout/styles';
 import { IRouterProps } from '@erxes/ui/src/types';
-import { __, router } from '@erxes/ui/src/utils';
+import { router } from '@erxes/ui/src/utils';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { __ } from 'coreui/utils';
 import { ClientPortalConfig } from '../../types';
 
 interface IProps extends IRouterProps {
@@ -83,7 +83,7 @@ function ClientPortalUser({
 
   return (
     <Box
-      title={__(`Filter by ${kind} portal`)}
+      title={__(`filterByPortal`, { kind: __(kind) })}
       collapsible={clientPortalGetConfigs.length > 5}
       extraButtons={extraButtons}
       name="showFilterByClientPortalId"

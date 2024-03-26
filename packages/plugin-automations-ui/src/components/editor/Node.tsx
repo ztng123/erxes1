@@ -5,7 +5,7 @@ import Icon from '@erxes/ui/src/components/Icon';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
 import CommonForm from '@erxes/ui/src/components/form/Form';
 import colors from '@erxes/ui/src/styles/colors';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import NoteFormContainer from '../../containers/forms/NoteForm';
 import { AutomationConstants, IAutomation, IAutomationNote } from '../../types';
 import { renderDynamicComponent } from '../../utils';
@@ -63,7 +63,7 @@ export const ScratchNode = ({ data }: Props) => {
   return (
     <CommonScratchNode onClick={toggleDrawer.bind(this, { type: 'triggers' })}>
       <Icon icon="file-plus" size={25} />
-      <p>{__('How do you want to trigger this automation')}?</p>
+      <p>{__('triggerAutomation')}?</p>
     </CommonScratchNode>
   );
 };

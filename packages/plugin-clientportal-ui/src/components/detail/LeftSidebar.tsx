@@ -4,8 +4,8 @@ import {
   SidebarCounter,
   SidebarList
 } from '@erxes/ui/src/layout/styles';
-import { __, renderFullName } from '@erxes/ui/src/utils/core';
-
+import { renderFullName } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import Box from '@erxes/ui/src/components/Box';
 import CustomFieldsSection from '../../containers/CustomFieldsSection';
 import DetailInfo from './DetailInfo';

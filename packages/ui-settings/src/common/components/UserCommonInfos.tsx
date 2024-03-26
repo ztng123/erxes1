@@ -6,9 +6,10 @@ import ControlLabel from '@erxes/ui/src/components/form/Label';
 import timezones from '@erxes/ui/src/constants/timezones';
 import { FormColumn, FormWrapper } from '@erxes/ui/src/styles/main';
 import { IFormProps } from '@erxes/ui/src/types';
-import { __, getConstantFromStore } from '@erxes/ui/src/utils';
+import { getConstantFromStore } from '@erxes/ui/src/utils';
 import React from 'react';
 import dayjs from 'dayjs';
+import { __ } from 'coreui/utils';
 import { IUser } from '@erxes/ui/src/auth/types';
 
 type Props = {
@@ -53,7 +54,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
           <FormWrapper>
             <FormColumn>
               <FormGroup>
-                <ControlLabel>First name</ControlLabel>
+                <ControlLabel>{__('First name')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="firstName"
@@ -62,7 +63,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Last name</ControlLabel>
+                <ControlLabel>{__('Last name')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="lastName"
@@ -71,7 +72,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel required={true}>Email</ControlLabel>
+                <ControlLabel required={true}>{__('Email')}</ControlLabel>
                 <FormControl
                   type="email"
                   name="email"
@@ -81,7 +82,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Description</ControlLabel>
+                <ControlLabel>{__('Description')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="description"
@@ -92,7 +93,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Position</ControlLabel>
+                <ControlLabel>{__('Position')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="position"
@@ -101,7 +102,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Join date</ControlLabel>
+                <ControlLabel>{__('Join date')}</ControlLabel>
                 <FormControl
                   type="date"
                   name="workStartedDate"
@@ -114,7 +115,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
             </FormColumn>
             <FormColumn>
               <FormGroup>
-                <ControlLabel>Middle name</ControlLabel>
+                <ControlLabel>{__('Middle name')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="middleName"
@@ -123,7 +124,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Short name</ControlLabel>
+                <ControlLabel>{__('Short name')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="shortName"
@@ -132,7 +133,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel required={true}>Username</ControlLabel>
+                <ControlLabel required={true}>{__('Username')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="username"
@@ -142,7 +143,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Employee Id</ControlLabel>
+                <ControlLabel>{__('Employee Id')}</ControlLabel>
                 <FormControl
                   type="number"
                   min={0}
@@ -152,7 +153,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Birthdate</ControlLabel>
+                <ControlLabel>{__('Birthdate')}</ControlLabel>
                 <FormControl
                   type="date"
                   name="birthDate"
@@ -163,7 +164,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Phone (operator)</ControlLabel>
+                <ControlLabel>{__('Phone (operator)')}</ControlLabel>
                 <FormControl
                   type="text"
                   name="operatorPhone"
@@ -172,7 +173,7 @@ class UserCommonInfos extends React.PureComponent<Props> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Location</ControlLabel>
+                <ControlLabel>{__('Location')}</ControlLabel>
                 <FormControl
                   componentClass="select"
                   defaultValue={details.location}

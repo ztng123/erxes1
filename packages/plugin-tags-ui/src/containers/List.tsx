@@ -7,14 +7,13 @@ import {
   TagsQueryResponse
 } from '../types';
 import { mutations, queries } from '../graphql';
-
+import { __ } from 'coreui/utils';
 import ButtonMutate from '@erxes/ui/src/components/ButtonMutate';
 import EmptyState from '@erxes/ui/src/components/EmptyState';
 import { IButtonMutateProps } from '@erxes/ui/src/types';
 import List from '../components/List';
 import React from 'react';
 import Spinner from '@erxes/ui/src/components/Spinner';
-import { __ } from '@erxes/ui/src/utils/core';
 import { generatePaginationParams } from '@erxes/ui/src/utils/router';
 import { gql } from '@apollo/client';
 import { graphql } from '@apollo/client/react/hoc';
@@ -70,13 +69,12 @@ const ListContainer = (props: FinalProps) => {
   }
 
   const remove = tag => {
-    confirm(
-      `This action will untag all ${tag.type}(s) with this tag and remove the tag. Are you sure?`
-    )
+    const message = __('untagConfirmMessage', { tagType: __(tag.type) });
+    confirm(message)
       .then(() => {
         removeMutation({ variables: { _id: tag._id } })
           .then(() => {
-            Alert.success('You successfully deleted a tag');
+            Alert.success(__('You successfully deleted a tag'));
             tagsQuery.refetch();
           })
           .catch(e => {
@@ -92,7 +90,7 @@ const ListContainer = (props: FinalProps) => {
     mergeMutation({ variables: { sourceId, destId } })
       .then(() => {
         callback();
-        Alert.success('You successfully merged tags');
+        Alert.success(__('You successfully merged tags'));
         tagsQuery.refetch();
       })
       .catch(e => {
@@ -115,9 +113,10 @@ const ListContainer = (props: FinalProps) => {
         refetchQueries={getRefetchQueries(queryParams)}
         isSubmitted={isSubmitted}
         type="submit"
-        successMessage={`You successfully ${
-          object ? 'updated' : 'added'
-        } a ${name}`}
+        successMessage={__(
+          object ? 'updateSuccessMessage' : 'addSuccessMessage',
+          { name: __(name) }
+        )}
       />
     );
   };

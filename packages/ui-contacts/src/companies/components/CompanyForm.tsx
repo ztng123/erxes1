@@ -11,8 +11,8 @@ import {
 } from '@erxes/ui/src/styles/main';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
 import { ICompany, ICompanyDoc, ICompanyLinks } from '../types';
-import { __, getConstantFromStore } from '@erxes/ui/src/utils';
-
+import { getConstantFromStore } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import AutoCompletionSelect from '@erxes/ui/src/components/AutoCompletionSelect';
 import AvatarUpload from '@erxes/ui/src/components/AvatarUpload';
 import Button from '@erxes/ui/src/components/Button';
@@ -128,7 +128,7 @@ class CompanyForm extends React.Component<Props, State> {
   generateConstantParams(constants) {
     return constants.map(constant => ({
       value: constant,
-      label: constant
+      label: __(constant)
     }));
   }
 
@@ -222,16 +222,16 @@ class CompanyForm extends React.Component<Props, State> {
               </FormColumn>
 
               <FormColumn>
-                {this.renderFormGroup('Code', {
+                {this.renderFormGroup(__('Code'), {
                   ...formProps,
                   name: 'code',
                   defaultValue: company.code || ''
                 })}
 
                 <FormGroup>
-                  <ControlLabel>Owner</ControlLabel>
+                  <ControlLabel>{__('Owner')}</ControlLabel>
                   <SelectTeamMembers
-                    label="Choose an owner"
+                    label={__('Choose an owner')}
                     name="ownerId"
                     initialValue={ownerId}
                     onSelect={onSelectOwner}
@@ -243,13 +243,13 @@ class CompanyForm extends React.Component<Props, State> {
             <FormWrapper>
               <FormColumn>
                 <FormGroup>
-                  <ControlLabel required={true}>Name</ControlLabel>
+                  <ControlLabel required={true}>{__('Name')}</ControlLabel>
                   <AutoCompletionSelect
                     required={true}
                     defaultValue={primaryName}
                     defaultOptions={names || []}
                     autoCompletionType="names"
-                    placeholder="Enter company name"
+                    placeholder={__('Enter company name')}
                     queryName="companies"
                     query={autoCompletionQuery}
                     onChange={this.onChange.bind(this, 'names', 'primaryName')}
@@ -257,7 +257,7 @@ class CompanyForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel>Industries</ControlLabel>
+                  <ControlLabel>{__('Industries')}</ControlLabel>
                   <Select
                     value={this.state.industry}
                     onChange={this.onIndustryChange}
@@ -270,12 +270,12 @@ class CompanyForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel>Email</ControlLabel>
+                  <ControlLabel>{__('Email')}</ControlLabel>
                   <AutoCompletionSelect
                     defaultValue={primaryEmail}
                     defaultOptions={emails || []}
                     autoCompletionType="emails"
-                    placeholder="Enter company email"
+                    placeholder={__('Enter company email')}
                     queryName="companies"
                     query={autoCompletionQuery}
                     onChange={this.onChange.bind(
@@ -288,7 +288,7 @@ class CompanyForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel>Description</ControlLabel>
+                  <ControlLabel>{__('Description')}</ControlLabel>
                   <FormControl
                     {...formProps}
                     max={140}
@@ -298,7 +298,7 @@ class CompanyForm extends React.Component<Props, State> {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <ControlLabel>Headquarters Country</ControlLabel>
+                  <ControlLabel>{__('Headquarters Country')}</ControlLabel>
                   <Select
                     value={this.state.location}
                     onChange={this.onCountryChange}
@@ -310,9 +310,9 @@ class CompanyForm extends React.Component<Props, State> {
               </FormColumn>
               <FormColumn>
                 <FormGroup>
-                  <ControlLabel>Parent Company</ControlLabel>
+                  <ControlLabel>{__('Parent Company')}</ControlLabel>
                   <SelectCompanies
-                    label="Choose parent company"
+                    label={__('Choose parent company')}
                     name="parentCompanyId"
                     initialValue={parentCompanyId}
                     onSelect={onSelectParentCompany}
@@ -320,7 +320,7 @@ class CompanyForm extends React.Component<Props, State> {
                   />
                 </FormGroup>
                 <FormGroup>
-                  <ControlLabel>Business Type</ControlLabel>
+                  <ControlLabel>{__('Business Type')}</ControlLabel>
                   <Select
                     value={this.state.businessType}
                     onChange={this.onBusinessChange}
@@ -333,12 +333,12 @@ class CompanyForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel>Phone</ControlLabel>
+                  <ControlLabel>{__('Phone')}</ControlLabel>
                   <AutoCompletionSelect
                     defaultValue={primaryPhone}
                     defaultOptions={phones || []}
                     autoCompletionType="phones"
-                    placeholder="Enter company phone"
+                    placeholder={__('Enter company phone')}
                     queryName="companies"
                     query={autoCompletionQuery}
                     onChange={this.onChange.bind(
@@ -350,14 +350,14 @@ class CompanyForm extends React.Component<Props, State> {
                   />
                 </FormGroup>
 
-                {this.renderFormGroup('Size', {
+                {this.renderFormGroup(__('Size'), {
                   ...formProps,
                   name: 'size',
                   type: 'number',
                   defaultValue: company.size || 0
                 })}
 
-                {this.renderFormGroup('Subscribed', {
+                {this.renderFormGroup(__('Subscribed'), {
                   componentClass: 'radio',
                   options: [
                     {
@@ -406,7 +406,7 @@ class CompanyForm extends React.Component<Props, State> {
 
         <ModalFooter>
           <Button btnStyle="simple" onClick={closeModal} icon="cancel-1">
-            Close
+            {__('Close')}
           </Button>
 
           {renderButton({

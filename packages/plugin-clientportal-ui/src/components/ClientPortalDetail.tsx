@@ -1,5 +1,5 @@
 import { Tabs, TabTitle } from '@erxes/ui/src/components/tabs';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import React from 'react';
 
 import { CONFIG_TYPES } from '../constants';

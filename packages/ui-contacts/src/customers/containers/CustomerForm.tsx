@@ -20,6 +20,7 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 import client from '@erxes/ui/src/apolloClient';
 import { gql } from '@apollo/client';
+import { __ } from 'coreui/utils';
 
 type Props = {
   type?: string;

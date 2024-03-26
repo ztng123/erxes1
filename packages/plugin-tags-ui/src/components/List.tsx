@@ -5,8 +5,8 @@ import {
   InputBar,
   Title
 } from '@erxes/ui-settings/src/styles';
-import { __, router } from '@erxes/ui/src/utils';
-
+import { router } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import Button from '@erxes/ui/src/components/Button';
 import DataWithLoader from '@erxes/ui/src/components/DataWithLoader';
 import FormComponent from '@erxes/ui-tags/src/components/Form';
@@ -52,7 +52,7 @@ function List({
 
   const trigger = (
     <Button id={'AddTagButton'} btnStyle="success" icon="plus-circle">
-      Add tag
+      {__('Add tag')}
     </Button>
   );
 

@@ -3,7 +3,7 @@ import SetProperty from '../../../containers/forms/actions/subForms/SetProperty'
 import { IAction } from '@erxes/ui-automations/src/types';
 import Button from '@erxes/ui/src/components/Button';
 import { ModalFooter } from '@erxes/ui/src/styles/main';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import React from 'react';
 import Common from '@erxes/ui-automations/src/components/forms/actions/Common';
 import CustomCode from './subForms/CustomCode';

@@ -14,7 +14,7 @@ import {
   ScrollWrapper
 } from '@erxes/ui/src/styles/main';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import React from 'react';
 
 import { USER_LOGIN_TYPES } from '../../constants';
@@ -130,7 +130,7 @@ class CustomerForm extends React.Component<Props, State> {
     return USER_LOGIN_TYPES.map(e => {
       return (
         <option key={e.value} value={e.value}>
-          {e.label}
+          {__(e.label)}
         </option>
       );
     });
@@ -172,7 +172,7 @@ class CustomerForm extends React.Component<Props, State> {
           <FormWrapper>
             <FormColumn>
               <FormGroup>
-                <ControlLabel required={true}>First Name</ControlLabel>
+                <ControlLabel required={true}>{__('First Name')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   defaultValue={clientPortalUser.firstName || ''}
@@ -183,7 +183,7 @@ class CustomerForm extends React.Component<Props, State> {
               </FormGroup>
 
               <FormGroup>
-                <ControlLabel>Last Name</ControlLabel>
+                <ControlLabel>{__('Last Name')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="lastName"
@@ -192,7 +192,7 @@ class CustomerForm extends React.Component<Props, State> {
               </FormGroup>
 
               <FormGroup>
-                <ControlLabel>User Name</ControlLabel>
+                <ControlLabel>{__('User Name')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="username"
@@ -200,7 +200,7 @@ class CustomerForm extends React.Component<Props, State> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Company</ControlLabel>
+                <ControlLabel>{__('Company')}</ControlLabel>
                 <SelectCompanies
                   initialValue={clientPortalUser.erxesCompanyId}
                   label={__('Select a company')}
@@ -212,7 +212,7 @@ class CustomerForm extends React.Component<Props, State> {
             </FormColumn>
             <FormColumn>
               <FormGroup>
-                <ControlLabel>Code</ControlLabel>
+                <ControlLabel>{__('Code')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="code"
@@ -220,7 +220,7 @@ class CustomerForm extends React.Component<Props, State> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel required={true}>Email</ControlLabel>
+                <ControlLabel required={true}>{__('Email')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="email"
@@ -229,7 +229,7 @@ class CustomerForm extends React.Component<Props, State> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>Phone</ControlLabel>
+                <ControlLabel>{__('Phone')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="phone"
@@ -237,7 +237,7 @@ class CustomerForm extends React.Component<Props, State> {
                 />
               </FormGroup>
               <FormGroup>
-                <ControlLabel>ClientPortal</ControlLabel>
+                <ControlLabel>{__('ClientPortal')}</ControlLabel>
                 <FormControl
                   {...formProps}
                   name="clientPortalId"
@@ -258,9 +258,13 @@ class CustomerForm extends React.Component<Props, State> {
           </FormWrapper>
         </CollapseContent>
 
-        <CollapseContent title="Authentication" compact={true} open={true}>
+        <CollapseContent
+          title={__('Authentication')}
+          compact={true}
+          open={true}
+        >
           <FormGroup>
-            <ControlLabel>Password</ControlLabel>
+            <ControlLabel>{__('Password')}</ControlLabel>
             <FormControl
               {...formProps}
               name="password"
@@ -272,7 +276,7 @@ class CustomerForm extends React.Component<Props, State> {
 
           {!clientPortalUser._id && (
             <FormGroup>
-              <ControlLabel>Send invitation email</ControlLabel>
+              <ControlLabel>{__('Send invitation email')}</ControlLabel>
               <FormControl
                 {...formProps}
                 name="disableVerificationMail"
@@ -304,7 +308,7 @@ class CustomerForm extends React.Component<Props, State> {
         <FormWrapper>
           <FormColumn>
             <FormGroup>
-              <ControlLabel required={true}>Company Name</ControlLabel>
+              <ControlLabel required={true}>{__('Company Name')}</ControlLabel>
               <FormControl
                 {...formProps}
                 defaultValue={clientPortalUser.companyName || ''}
@@ -315,7 +319,7 @@ class CustomerForm extends React.Component<Props, State> {
             </FormGroup>
 
             <FormGroup>
-              <ControlLabel>Company Registration Number</ControlLabel>
+              <ControlLabel>{__('Company Registration Number')}</ControlLabel>
               <FormControl
                 {...formProps}
                 name="companyRegistrationNumber"
@@ -325,7 +329,7 @@ class CustomerForm extends React.Component<Props, State> {
           </FormColumn>
           <FormColumn>
             <FormGroup>
-              <ControlLabel required={true}>Email</ControlLabel>
+              <ControlLabel required={true}>{__('Email')}</ControlLabel>
               <FormControl
                 {...formProps}
                 name="email"
@@ -334,7 +338,7 @@ class CustomerForm extends React.Component<Props, State> {
               />
             </FormGroup>
             <FormGroup>
-              <ControlLabel>Phone</ControlLabel>
+              <ControlLabel>{__('Phone')}</ControlLabel>
               <FormControl
                 {...formProps}
                 name="phone"
@@ -342,7 +346,7 @@ class CustomerForm extends React.Component<Props, State> {
               />
             </FormGroup>
             <FormGroup>
-              <ControlLabel>ClientPortal</ControlLabel>
+              <ControlLabel>{__('ClientPortal')}</ControlLabel>
               <FormControl
                 {...formProps}
                 name="clientPortalId"
@@ -376,7 +380,7 @@ class CustomerForm extends React.Component<Props, State> {
       <>
         <ScrollWrapper>
           <FormGroup>
-            <ControlLabel>Business Portal User Type</ControlLabel>
+            <ControlLabel>{__('Business Portal User Type')}</ControlLabel>
             <FormControl
               {...formProps}
               name="type"

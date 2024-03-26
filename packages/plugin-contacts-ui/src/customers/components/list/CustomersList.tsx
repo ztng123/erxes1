@@ -277,7 +277,7 @@ class CustomersList extends React.Component<IProps, State> {
 
     const addTrigger = (
       <Button btnStyle="success" size="small" icon="plus-circle">
-        Add {type || 'customer'}
+        {__('Add')} {__(type || 'customer')}
       </Button>
     );
 

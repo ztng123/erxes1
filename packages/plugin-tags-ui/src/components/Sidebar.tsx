@@ -4,7 +4,7 @@ import React from 'react';
 import SidebarHeader from '@erxes/ui-settings/src/common/components/SidebarHeader';
 import { SidebarList } from '@erxes/ui/src/layout/styles';
 import { SidebarListItem } from '@erxes/ui-settings/src/styles';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 
 function ListItem(value, type) {
   const isActive = value.contentType === type;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import FormGroup from '@erxes/ui/src/components/form/Group';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
-
+import { __ } from 'coreui/utils';
 import { ModalFooter } from '@erxes/ui/src/styles/main';
 import ModalTrigger from '@erxes/ui/src/components/ModalTrigger';
 import { IRouterProps } from '@erxes/ui/src/types';
@@ -95,7 +95,7 @@ function TemporarySegment({ history, contentType, btnSize, afterSave }: Props) {
       <>
         <form>
           <FormGroup>
-            <ControlLabel required={true}>Name</ControlLabel>
+            <ControlLabel required={true}>{__('Name')}</ControlLabel>
             <FormControl
               required={true}
               autoFocus={true}
@@ -113,7 +113,7 @@ function TemporarySegment({ history, contentType, btnSize, afterSave }: Props) {
               onClick={props.closeModal}
               icon="times-circle"
             >
-              Cancel
+              {__('Cancel')}
             </Button>
 
             <Button
@@ -127,7 +127,7 @@ function TemporarySegment({ history, contentType, btnSize, afterSave }: Props) {
               }}
               icon="check-circle"
             >
-              Save
+              {__('Save')}
             </Button>
           </ModalFooter>
         </form>
@@ -200,7 +200,7 @@ function TemporarySegment({ history, contentType, btnSize, afterSave }: Props) {
         icon="plus-circle"
         onClick={toggleDrawer}
       >
-        Add filter
+        {__('Add filter')}
       </Button>
 
       {showDrawer && content}

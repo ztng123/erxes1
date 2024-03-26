@@ -1,5 +1,5 @@
-import { __, router } from '../utils/core';
-
+import { router } from '../utils/core';
+import { __ } from 'coreui/utils';
 import Box from './Box';
 import FilterByParams from './FilterByParams';
 import { IRouterProps } from '../types';

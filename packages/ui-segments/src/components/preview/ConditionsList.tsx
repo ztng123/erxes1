@@ -4,7 +4,7 @@ import Icon from '@erxes/ui/src/components/Icon';
 import { FlexRightItem } from '@erxes/ui/src/layout';
 import PropertyCondition from '../../containers/form/PropertyCondition';
 import { IField, ISegmentCondition, ISegmentMap } from '../../types';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import React from 'react';
 import {
   Condition,
@@ -143,10 +143,10 @@ class ConditionsList extends React.Component<Props, State> {
       <ConjunctionButtonsVertical>
         <Button.Group hasGap={false}>
           <Button size="small" onClick={onClickOr} btnStyle={btnSyleOr}>
-            <span>Or</span>
+            <span>{__('Or')}</span>
           </Button>
           <Button size="small" onClick={onClickAnd} btnStyle={btnStyleAnd}>
-            <span>And</span>
+            <span>{__('And')}</span>
           </Button>
         </Button.Group>
       </ConjunctionButtonsVertical>
@@ -232,7 +232,7 @@ class ConditionsList extends React.Component<Props, State> {
             icon="add"
             onClick={this.addProperty}
           >
-            Add property
+            {__('Add property')}
           </Button>
 
           {!hideDetailForm ? (
@@ -242,7 +242,7 @@ class ConditionsList extends React.Component<Props, State> {
               icon="add"
               onClick={this.addEvent}
             >
-              Add event
+              {__('Add event')}
             </Button>
           ) : null}
         </ButtonWrapper>

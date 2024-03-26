@@ -1,6 +1,6 @@
 import Button from '@erxes/ui/src/components/Button';
 import Icon from '@erxes/ui/src/components/Icon';
-
+import { __ } from 'coreui/utils';
 import FormControl from '@erxes/ui/src/components/form/Control';
 import FormGroup from '@erxes/ui/src/components/form/Group';
 import CommonForm from '@erxes/ui/src/components/form/Form';
@@ -8,7 +8,7 @@ import ControlLabel from '@erxes/ui/src/components/form/Label';
 
 import { ModalFooter } from '@erxes/ui/src/styles/main';
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
-import { __, generateRandomColorCode } from '@erxes/ui/src/utils';
+import { generateRandomColorCode } from '@erxes/ui/src/utils';
 import { FlexContent, FlexItem } from '@erxes/ui/src/layout/styles';
 import Popover from 'react-bootstrap/Popover';
 import TwitterPicker from 'react-color/lib/Twitter';
@@ -170,7 +170,7 @@ class SegmentFormAutomations extends React.Component<Props, State> {
 
     return (
       <FormGroup>
-        <ControlLabel>Sub segment of</ControlLabel>
+        <ControlLabel>{__('Sub segment of')}</ControlLabel>
         <FormControl
           {...formProps}
           name="subOf"
@@ -261,7 +261,7 @@ class SegmentFormAutomations extends React.Component<Props, State> {
         <FlexContent>
           <FlexItem count={5}>
             <FormGroup>
-              <ControlLabel required={true}>Segment Name</ControlLabel>
+              <ControlLabel required={true}>{__('Segment Name')}</ControlLabel>
               <FormControl
                 {...formProps}
                 name="name"
@@ -279,7 +279,7 @@ class SegmentFormAutomations extends React.Component<Props, State> {
         <FlexContent>
           <FlexItem count={7}>
             <FormGroup>
-              <ControlLabel>Description</ControlLabel>
+              <ControlLabel>{__('Description')}</ControlLabel>
               <FormControl
                 {...formProps}
                 name="description"
@@ -290,7 +290,7 @@ class SegmentFormAutomations extends React.Component<Props, State> {
           </FlexItem>
           <FlexItem hasSpace={true}>
             <FormGroup>
-              <ControlLabel>Color</ControlLabel>
+              <ControlLabel>{__('Color')}</ControlLabel>
               <div id="segment-color">
                 <OverlayTrigger
                   trigger="click"
@@ -314,7 +314,7 @@ class SegmentFormAutomations extends React.Component<Props, State> {
               onChange={onShouldWriteActivityLogChange}
               checked={shouldWriteActivityLog}
             >
-              Write activity log when items enter this segment
+              {__('Write activity log when items enter this segment')}
             </FormControl>
           </FlexItem>
         </FlexContent>
@@ -592,7 +592,7 @@ class SegmentFormAutomations extends React.Component<Props, State> {
             btnStyle="simple"
             icon="add"
           >
-            Add new group
+            {__('Add new group')}
           </Button>
         ) : (
           <></>
@@ -718,7 +718,7 @@ class SegmentFormAutomations extends React.Component<Props, State> {
               icon="crosshairs"
               onClick={onPreviewCount}
             >
-              Show count
+              {__('Show count')}
             </Button>
           )}
 
@@ -773,12 +773,12 @@ class SegmentFormAutomations extends React.Component<Props, State> {
                 icon="times-circle"
                 onClick={closeModal}
               >
-                Cancel
+                {__('Cancel')}
               </Button>
             ) : (
               <Link to={`/segments?contentType=${contentType}`}>
                 <Button btnStyle="simple" icon="times-circle">
-                  Cancel
+                  {__('Cancel')}
                 </Button>
               </Link>
             )}

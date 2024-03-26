@@ -1,12 +1,12 @@
 import Box from '../../components/Box';
 import DataWithLoader from '../../components/DataWithLoader';
 import { IRouterProps } from '../../types';
-import { __, router } from '../../utils';
+import { router } from '../../utils';
 import { FieldStyle, SidebarCounter, SidebarList } from '../../layout/styles';
 import { IBrand } from '../../brands/types';
 import React from 'react';
 import { withRouter } from 'react-router-dom';
-
+import { __ } from 'coreui/utils';
 interface IProps extends IRouterProps {
   counts: { [key: string]: number };
   brands: IBrand[];
@@ -26,7 +26,7 @@ function Brands({ history, counts, brands, loading, emptyText }: IProps) {
         return (
           <li key={brand._id}>
             <a
-              href='#filter'
+              href="#filter"
               tabIndex={0}
               className={
                 router.getParam(history, 'brand') === brand._id ? 'active' : ''
@@ -46,15 +46,15 @@ function Brands({ history, counts, brands, loading, emptyText }: IProps) {
     <Box
       title={__('Filter by brand')}
       collapsible={brands.length > 5}
-      name='showFilterByBrand'
+      name="showFilterByBrand"
     >
       <DataWithLoader
         data={data}
         loading={loading}
         count={brands.length}
         emptyText={emptyText || 'Empty'}
-        emptyIcon='leaf'
-        size='small'
+        emptyIcon="leaf"
+        size="small"
         objective={true}
       />
     </Box>

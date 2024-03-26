@@ -13,7 +13,7 @@ import PageContent from '@erxes/ui/src/layout/components/PageContent';
 import Wrapper from '@erxes/ui/src/layout/components/Wrapper';
 import { BarItems, FlexContent } from '@erxes/ui/src/layout/styles';
 import Alert from '@erxes/ui/src/utils/Alert/index';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import { Link } from 'react-router-dom';
 import RTG from 'react-transition-group';
 import Histories from '../histories/Wrapper';
@@ -423,7 +423,7 @@ class Editor extends React.Component<Props, State> {
           icon="plus-circle"
           onClick={this.toggleDrawer.bind(this, { type: 'triggers' })}
         >
-          Add a Trigger
+          {__('Add a Trigger')}
         </Button>
         <Button
           btnStyle="primary"
@@ -431,7 +431,7 @@ class Editor extends React.Component<Props, State> {
           icon="plus-circle"
           onClick={this.toggleDrawer.bind(this, { type: 'actions' })}
         >
-          Add an Action
+          {__('Add an Action')}
         </Button>
       </>
     );
@@ -537,7 +537,7 @@ class Editor extends React.Component<Props, State> {
 
     const trigger = (
       <Button btnStyle="primary" size="small" icon={'check-circle'}>
-        Save as a template
+        {__('Save as a template')}
       </Button>
     );
 

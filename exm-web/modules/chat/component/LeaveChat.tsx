@@ -1,7 +1,7 @@
 "use client"
 
 import { AlertTriangleIcon } from "lucide-react"
-
+import { __ } from "coreui/utils";
 import { Button } from "@/components/ui/button"
 import { DialogContent, DialogFooter } from "@/components/ui/dialog"
 import LoadingPost from "@/components/ui/loadingPost"
@@ -32,7 +32,7 @@ const LeaveChat = ({ setOpen, _id }: Props) => {
       {mutationLoading ? <LoadingPost text="Leaving" /> : null}
 
       <div className="flex flex-col items-center justify-center">
-        <AlertTriangleIcon size={30} color={"#6569DF"} /> Are you sure?
+        <AlertTriangleIcon size={30} color={"#6569DF"} /> {__("Are you sure?")}
       </div>
 
       <DialogFooter className="flex flex-col items-center justify-center sm:justify-center sm:space-x-2">
@@ -40,7 +40,7 @@ const LeaveChat = ({ setOpen, _id }: Props) => {
           className="font-semibold rounded-full bg-[#F2F2F2] hover:bg-[#F2F2F2] text-black"
           onClick={() => setOpen(false)}
         >
-          No, Cancel
+          {__("No, Cancel")}
         </Button>
 
         <Button
@@ -48,7 +48,7 @@ const LeaveChat = ({ setOpen, _id }: Props) => {
           className="font-semibold rounded-full"
           onClick={onDelete}
         >
-          Yes, I am
+          {__("Yes, I am")}
         </Button>
       </DialogFooter>
     </DialogContent>

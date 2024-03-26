@@ -2,6 +2,7 @@ import { ISegmentCondition } from '../../types';
 import React from 'react';
 import { DEFAULT_OPERATORS, OPERATORS } from '../constants';
 import { ConditionDetailText, PropertyText } from '../styles';
+import { __ } from 'coreui/utils';
 
 type Props = {
   condition: ISegmentCondition;
@@ -28,7 +29,7 @@ class PropertyDetail extends React.Component<Props, {}> {
       return op.value === propertyOperator;
     });
 
-    return operator ? operator.name : '';
+    return operator ? __(operator.name) : '';
   };
 
   renderValue = () => {
@@ -54,7 +55,7 @@ class PropertyDetail extends React.Component<Props, {}> {
         return selectOption.value === propertyValue;
       });
 
-      text = option ? option.label : text;
+      text = option ? __(option.label) : text;
     }
 
     if (type === 'radio' && choiceOptions.length > 0) {
@@ -62,7 +63,7 @@ class PropertyDetail extends React.Component<Props, {}> {
         return choiceOption === propertyValue;
       });
 
-      text = option ? option : text;
+      text = option ? __(option) : text;
     }
 
     return text;
@@ -101,8 +102,8 @@ class PropertyDetail extends React.Component<Props, {}> {
 
     return (
       <ConditionDetailText>
-        <span>{`${propertyTypeText}'s`} </span>
-        <PropertyText onClick={this.onClickProperty}>{label}</PropertyText>
+        <span>{`${__(propertyTypeText)}${__("'s")}`} </span>
+        <PropertyText onClick={this.onClickProperty}>{__(label)}</PropertyText>
         {valueText}
       </ConditionDetailText>
     );

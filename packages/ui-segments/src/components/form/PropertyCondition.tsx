@@ -11,7 +11,7 @@ import React from 'react';
 import { RenderDynamicComponent } from '@erxes/ui/src/utils/core';
 import { SegmentBackIcon } from '../styles';
 import Select from 'react-select-plus';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 
 type Props = {
   contentType: string;
@@ -113,7 +113,7 @@ class PropertyCondition extends React.Component<Props, State> {
           value={propertyType}
           options={associationTypes.map(option => ({
             value: option.value,
-            label: option.description
+            label: __(option.description)
           }))}
           onChange={onChange}
         />
@@ -127,17 +127,17 @@ class PropertyCondition extends React.Component<Props, State> {
             <></>
           ) : (
             <SegmentBackIcon onClick={onClickBackToList}>
-              <Icon icon="angle-left" size={20} /> back
+              <Icon icon="angle-left" size={20} /> {__('back')}
             </SegmentBackIcon>
           )}
 
           <FormGroup>
-            <ControlLabel>Property type</ControlLabel>
+            <ControlLabel>{__('Property type')}</ControlLabel>
             {generateSelect()}
           </FormGroup>
           {this.renderExtraContent()}
           <FormGroup>
-            <ControlLabel>Properties</ControlLabel>
+            <ControlLabel>{__('Properties')}</ControlLabel>
             <FormControl
               type="text"
               placeholder={__('Type to search')}
@@ -157,7 +157,7 @@ class PropertyCondition extends React.Component<Props, State> {
     return (
       <>
         <SegmentBackIcon onClick={this.onClickBack}>
-          <Icon icon="angle-left" size={20} /> back
+          <Icon icon="angle-left" size={20} /> {__('back')}
         </SegmentBackIcon>
         <PropertyForm
           {...this.props}

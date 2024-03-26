@@ -1,5 +1,5 @@
 import Datetime from '@nateradebaugh/react-datetime';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import { IField, ISegmentCondition } from '../../types';
 import React from 'react';
 import Select from 'react-select-plus';
@@ -184,7 +184,7 @@ class PropertyForm extends React.Component<Props, State> {
             value={operator.value}
             checked={this.isChecked(operator)}
           >
-            {operator.name}
+            {__(operator.name)}
           </FormControl>
           {this.renderInput(operator)}
         </div>
@@ -215,11 +215,11 @@ class PropertyForm extends React.Component<Props, State> {
 
     return (
       <OperatorList>
-        <b>{field.label}</b>
+        <b>{__(field.label)}</b>
         <Formgroup>{this.renderOperators()}</Formgroup>
         <CenterContent>
           <Button onClick={this.onClick} btnStyle="default">
-            Apply filter
+            {__('Apply filter')}
           </Button>
         </CenterContent>
       </OperatorList>

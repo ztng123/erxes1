@@ -1,4 +1,4 @@
-import { Alert, __, getConstantFromStore } from '@erxes/ui/src/utils';
+import { Alert, getConstantFromStore } from '@erxes/ui/src/utils';
 import {
   DateContainer,
   FormColumn,
@@ -32,6 +32,7 @@ import React from 'react';
 import SelectTeamMembers from '@erxes/ui/src/team/containers/SelectTeamMembers';
 import { isEnabled, loadDynamicComponent } from '@erxes/ui/src/utils/core';
 import validator from 'validator';
+import { __ } from 'coreui/utils';
 
 type Props = {
   currentUser: IUser;
@@ -317,7 +318,9 @@ class CustomerForm extends React.Component<Props, State> {
             <FormWrapper>
               <FormColumn>
                 <FormGroup>
-                  <ControlLabel required={true}>First Name</ControlLabel>
+                  <ControlLabel required={true}>
+                    {__('First Name')}
+                  </ControlLabel>
                   <FormControl
                     {...formProps}
                     defaultValue={customer.firstName || ''}
@@ -328,7 +331,7 @@ class CustomerForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel>Middle Name</ControlLabel>
+                  <ControlLabel>{__('Middle Name')}</ControlLabel>
                   <FormControl
                     {...formProps}
                     name="middleName"
@@ -337,7 +340,7 @@ class CustomerForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel required={true}>Email</ControlLabel>
+                  <ControlLabel required={true}>{__('Email')}</ControlLabel>
                   <AutoCompletionSelect
                     required={true}
                     defaultValue={primaryEmail}
@@ -352,13 +355,18 @@ class CustomerForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel>Primary email verification status</ControlLabel>
+                  <ControlLabel>
+                    {__('Primary email verification status')}
+                  </ControlLabel>
                   <FormControl
                     {...formProps}
                     name="emailValidationStatus"
                     componentClass="select"
                     defaultValue={customer.emailValidationStatus || 'unknown'}
-                    options={EMAIL_VALIDATION_STATUSES}
+                    options={EMAIL_VALIDATION_STATUSES.map(status => ({
+                      ...status,
+                      label: __(status.label) // Translate the label
+                    }))}
                   />
                 </FormGroup>
 
@@ -386,7 +394,7 @@ class CustomerForm extends React.Component<Props, State> {
               </FormColumn>
               <FormColumn>
                 <FormGroup>
-                  <ControlLabel>Last Name</ControlLabel>
+                  <ControlLabel>{__('Last Name')}</ControlLabel>
                   <FormControl
                     {...formProps}
                     name="lastName"
@@ -408,7 +416,7 @@ class CustomerForm extends React.Component<Props, State> {
                 )}
 
                 <FormGroup>
-                  <ControlLabel>Phone</ControlLabel>
+                  <ControlLabel>{__('Phone')}</ControlLabel>
                   <AutoCompletionSelect
                     defaultValue={primaryPhone}
                     defaultOptions={this.getPhonesOptions(customer)}
@@ -422,13 +430,18 @@ class CustomerForm extends React.Component<Props, State> {
                 </FormGroup>
 
                 <FormGroup>
-                  <ControlLabel>Primary phone verification status</ControlLabel>
+                  <ControlLabel>
+                    {__('Primary phone verification status')}
+                  </ControlLabel>
                   <FormControl
                     {...formProps}
                     name="phoneValidationStatus"
                     componentClass="select"
                     defaultValue={customer.phoneValidationStatus || 'unknown'}
-                    options={PHONE_VALIDATION_STATUSES}
+                    options={PHONE_VALIDATION_STATUSES.map(status => ({
+                      ...status,
+                      label: __(status.label) // Translate the label
+                    }))}
                   />
                 </FormGroup>
 
@@ -515,7 +528,7 @@ class CustomerForm extends React.Component<Props, State> {
             onClick={closeModal}
             icon="times-circle"
           >
-            Close
+            {__('Close')}
           </Button>
 
           {renderButton({
@@ -536,7 +549,7 @@ class CustomerForm extends React.Component<Props, State> {
                 onClick={this.saveAndRedirect.bind(this, 'detail')}
                 disabled={isSubmitted}
               >
-                Save & View
+                {__('Save & View')}
               </Button>
               <Button
                 type="submit"
@@ -545,7 +558,7 @@ class CustomerForm extends React.Component<Props, State> {
                 disabled={isSubmitted}
                 icon="user-plus"
               >
-                Save & New
+                {__('Save & New')}
               </Button>
             </>
           )}

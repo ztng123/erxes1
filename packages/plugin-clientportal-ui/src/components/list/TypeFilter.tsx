@@ -1,7 +1,8 @@
 import Box from '@erxes/ui/src/components/Box';
 import DataWithLoader from '@erxes/ui/src/components/DataWithLoader';
 import { IRouterProps, Counts } from '@erxes/ui/src/types';
-import { __, router } from '@erxes/ui/src/utils';
+import { router } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import {
   FieldStyle,
   SidebarCounter,

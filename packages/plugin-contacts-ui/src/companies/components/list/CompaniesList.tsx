@@ -185,7 +185,7 @@ class CompaniesList extends React.Component<IProps, State> {
 
     const addTrigger = (
       <Button btnStyle="success" size="small" icon="plus-circle">
-        Add company
+        {__('Add company')}
       </Button>
     );
 
@@ -193,7 +193,7 @@ class CompaniesList extends React.Component<IProps, State> {
 
     const mergeButton = (
       <Button btnStyle="primary" size="small" icon="merge">
-        Merge
+        {__('Merge')}
       </Button>
     );
 
@@ -206,7 +206,7 @@ class CompaniesList extends React.Component<IProps, State> {
     if (bulk.length > 0) {
       const tagButton = (
         <Button btnStyle="simple" size="small" icon="tag-alt">
-          Tag
+          {__('Tag')}
         </Button>
       );
 
@@ -252,7 +252,7 @@ class CompaniesList extends React.Component<IProps, State> {
             icon="cancel-1"
             onClick={onClick}
           >
-            Remove
+            {__('Remove')}
           </Button>
         </BarItems>
       );
@@ -353,7 +353,7 @@ class CompaniesList extends React.Component<IProps, State> {
             data={mainContent}
             loading={loading}
             count={companies.length}
-            emptyText="Add in your first company!"
+            emptyText={__('Add in your first company!')}
             emptyImage="/images/actions/1.svg"
           />
         }

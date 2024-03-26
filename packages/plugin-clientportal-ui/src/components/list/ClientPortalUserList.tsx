@@ -16,7 +16,7 @@ import React from 'react';
 import Sidebar from './Sidebar';
 import Table from '@erxes/ui/src/components/table';
 import Wrapper from '@erxes/ui/src/layout/components/Wrapper';
-import { __ } from '@erxes/ui/src/utils/core';
+import { __ } from 'coreui/utils';
 import { menuContacts } from '@erxes/ui/src/utils/menus';
 import withTableWrapper from '@erxes/ui/src/components/table/withTableWrapper';
 
@@ -179,7 +179,7 @@ class ClientportalUserList extends React.Component<IProps, State> {
 
     const addTrigger = (
       <Button btnStyle="success" size="small" icon="plus-circle">
-        Add user
+        {__('Add user')}
       </Button>
     );
 
@@ -246,7 +246,7 @@ class ClientportalUserList extends React.Component<IProps, State> {
             icon="times-circle"
             onClick={onClick}
           >
-            Remove
+            {__('Remove')}
           </Button>
           <Button
             id="phone"
@@ -255,7 +255,7 @@ class ClientportalUserList extends React.Component<IProps, State> {
             icon="check-circle"
             onClick={onClickConfirm}
           >
-            Verify user phone
+            {__('Verify user phone')}
           </Button>
 
           <Button
@@ -265,7 +265,7 @@ class ClientportalUserList extends React.Component<IProps, State> {
             icon="check-circle"
             onClick={onClickConfirm}
           >
-            Verify user email
+            {__('Verify user email')}
           </Button>
         </BarItems>
       );

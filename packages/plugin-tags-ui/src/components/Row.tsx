@@ -12,7 +12,7 @@ import React from 'react';
 import Select from 'react-select-plus';
 import Tags from '@erxes/ui/src/components/Tags';
 import Tip from '@erxes/ui/src/components/Tip';
-import { __ } from '@erxes/ui/src/utils';
+import { __ } from 'coreui/utils';
 import styled from 'styled-components';
 import styledTS from 'styled-components-ts';
 

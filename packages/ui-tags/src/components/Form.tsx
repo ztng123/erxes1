@@ -1,5 +1,5 @@
 import { IButtonMutateProps, IFormProps } from '@erxes/ui/src/types';
-
+import { __ } from 'coreui/utils';
 import Button from '@erxes/ui/src/components/Button';
 import { COLORS } from '@erxes/ui/src/constants/colors';
 import ControlLabel from '@erxes/ui/src/components/form/Label';
@@ -142,7 +142,7 @@ class FormComponent extends React.Component<Props, State> {
     return (
       <>
         <FormGroup>
-          <ControlLabel required={true}>Name</ControlLabel>
+          <ControlLabel required={true}>{__('Name')}</ControlLabel>
           <FormControl
             {...formProps}
             name="name"
@@ -153,7 +153,7 @@ class FormComponent extends React.Component<Props, State> {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel>Color</ControlLabel>
+          <ControlLabel>{__('Color')}</ControlLabel>
           <OverlayTrigger
             trigger="click"
             rootClose={true}
@@ -167,7 +167,7 @@ class FormComponent extends React.Component<Props, State> {
         </FormGroup>
 
         <FormGroup>
-          <ControlLabel required={true}>Tags Type</ControlLabel>
+          <ControlLabel required={true}>{__('Tags Type')}</ControlLabel>
           <FormControl
             {...formProps}
             name="type"
@@ -177,7 +177,7 @@ class FormComponent extends React.Component<Props, State> {
           >
             {types.map((type: any, index: number) => (
               <option value={type.contentType} key={index}>
-                {type.description}
+                {__(type.description)}
               </option>
             ))}
           </FormControl>
@@ -185,7 +185,7 @@ class FormComponent extends React.Component<Props, State> {
 
         {tags && (
           <FormGroup>
-            <ControlLabel>Parent Tag</ControlLabel>
+            <ControlLabel>{__('Parent Tag')}</ControlLabel>
 
             <FormControl
               {...formProps}
@@ -201,7 +201,7 @@ class FormComponent extends React.Component<Props, State> {
 
         <ModalFooter id={'AddTagButtons'}>
           <Button btnStyle="simple" onClick={closeModal} icon="times-circle">
-            Cancel
+            {__('Cancel')}
           </Button>
 
           {renderButton({
